@@ -1,0 +1,257 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>All In One — Homepage</title>
+
+  <!-- Tailwind CDN (for quick prototyping) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font-awesome CDN (for icons)-->
+  <link 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
+    rel="stylesheet">
+
+  <!-- Swiper for carousels -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    /* small design extras */
+    .card-shadow { box-shadow: 0 8px 20px rgba(11,22,39,0.06); }
+    .glass {
+       background: rgba(255,255,255,0.8); backdrop-filter: blur(4px); 
+    }
+    body { 
+      font-family: 'Inter', sans-serif; 
+    }
+    .map-container {
+        background: linear-gradient(135deg, #e8f5e9 0%, #fff3e0 100%);
+        position: relative;
+    }
+    .location-marker {
+        width: 30px;
+        height: 40px;
+        position: absolute;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+    .location-marker:hover {
+        transform: scale(1.2);
+    }
+    .berry-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }    
+    .berry-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Header -->
+<header class="bg-white border-b">
+  <div class="container mx-auto px-4 md:px-8">
+    <div class="flex items-center justify-between py-4">
+      <div class="flex items-center gap-4">
+        <a href="{% url "home" %}" class="flex items-center gap-3">
+          <img src="" alt="AllInOne" class="h-10"/>
+        </a>
+        <div class="hidden md:flex items-center text-black px-3 py-1 rounded text-sm">
+          <span class="mr-2"><i class="fa-solid fa-phone text-grey"></i></span>
+          <span>{{ site_phone|default:"+234-807-4259-720" }}</span>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <form action="#" method="get" class="flex-1 mx-6 max-w-2xl">
+        <div class="relative">
+          <input name="q" class="w-full border rounded-md pl-4 pr-32 py-3 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="I want to buy..." />
+          <button type="submit" class="absolute right-1 top-1/2 -translate-y-1/2  px-4 py-2 rounded-full text-sm"><i class="fa-brands fa-searchengin text-green-600"></i></button>
+        </div>
+      </form>
+
+      <div class="flex items-center gap-4">
+        <a href="{% url "login" %}" class="px-4 py-2 border border-green-600 rounded-md text-sm">Log in</a>
+        <a href="{% url "signup" %}" class="bg-green-600 text-white px-4 py-2 rounded-md text-sm">Create account</a>
+        <a href="{% url "wishlist" %}" ><i class="fa-regular fa-heart text-lg"></i></a>
+        <a href="{% url "cart" %}" class="ml-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 7h13l-2-7M10 21a1 1 0 100-2 1 1 0 000 2zm7 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main nav -->
+  <nav class="bg-green-700 text-white">
+    <div class="container mx-auto px-4 md:px-8">
+      <div class="flex items-center gap-24 py-2">
+        <button class="px-3 py-2 bg-green-800 rounded text-sm hidden md:inline-flex items-center gap-2"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" stroke-linejoin="round"/></svg>All Categories</button>
+
+        <ul class="hidden md:flex gap-24 items-center text-sm">
+          <li><a href="#" class="hover:underline">Exclusive</a></li>
+          <li><a href="{% url "catalog" %}" class="hover:underline">Products</a></li>
+          <li><a href="#" class="hover:underline">Alcohol</a></li>
+          <li><a href="#" class="hover:underline">Beverages</a></li>
+          <li><a href="#" class="hover:underline">Household goods</a></li>
+          <li>
+            <a href="#" class="bg-yellow-500 text-green-900 px-3 py-1 rounded flex items-center gap-2">
+              <span>DISCOUNT</span>
+              <i class="fas fa-percentage"></i>
+            </a>
+          </li>
+        </ul>
+
+        <!-- small category chips (mobile scroll) -->
+        <div class="flex md:hidden overflow-x-auto gap-3 py-2">
+          {% for cat in categories|slice:":8" %}
+            <a href="#" class="flex-none bg-white text-sm px-3 py-2 rounded-full border">{{ cat.name }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+{% block content %}
+
+{% endblock content %}
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-200 mt-12">
+  <div class="container mx-auto px-4 md:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+      <div>
+        <img src="" alt="Logo" class="h-8 mb-4"/>
+        <p class="text-sm text-gray-400">All in One is a wholesale platform for businesses. © {{ now|date:"Y" }}</p>
+      </div>
+
+      <div>
+        <h5 class="font-semibold mb-2">SHOP</h5>
+        <ul class="text-sm text-gray-400 space-y-1">
+          <li><a href="#" class="hover:underline">Exclusive</a></li>
+          <li><a href="#" class="hover:underline">Products</a></li>
+          <li><a href="#" class="hover:underline">Beverages</a></li>
+          <li><a href="#" class="hover:underline">Alcohol</a></li>
+          <li><a href="#" class="hover:underline">Household goods</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="font-semibold mb-2">INFORMATION</h5>
+        <ul class="text-sm text-gray-400 space-y-1">
+          <li><a href="{% url "about" %}" class="hover:underline">About Us</a></li>
+          <li><a href="{% url "shop" %}" class="hover:underline">Our Shops</a></li>
+          <li><a href="{% url "news" %}" class="hover:underline">News</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="font-semibold mb-2">SUPPORT</h5>
+        <ul class="text-sm text-gray-400 space-y-1">
+          <li><a href="{% url "faq" %}" class="hover:underline">FAQ</a></li>
+          <li><a href="{% url "contact" %}" class="hover:underline">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="font-semibold mb-2">LEGAL</h5>
+        <ul class="text-sm text-gray-400 space-y-1">
+          <li><a href="{% url "p&p" %}" class="hover:underline">Privacy Policy</a></li>
+          <li><a href="{% url "t&c" %}" class="hover:underline">Terms & Conditions</a></li>
+          <li><a href="#" class="hover:underline">Delivery Information</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold mb-2">SOCIAL MEDIA</h5>
+        <div class="flex gap-4 text-lg">
+            <a href=""><i class="fa-brands fa-facebook"></i></a>
+            <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+            <a href=""><i class="fa-brands fa-linkedin"></i></a>
+            <a href=""><i class="fa-brands fa-telegram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-gray-800">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center text-sm text-gray-400">
+        <p>Copyright © 2025 S-cloud-tech. All rights reserved</p>
+        <p>Designed by Studio One and Developed by S-cloud-tech</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Minimal JS: Swiper init + simple add-to-cart click (AJAX placeholder) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Hero Swiper
+    new Swiper('.hero-swiper', {
+      loop: true,
+      pagination: { el: '.swiper-pagination', clickable: true },
+      autoplay: { delay: 5000 },
+    });
+
+    // Featured product swiper
+    new Swiper('.featured-swiper', {
+      slidesPerView: 1.2,
+      spaceBetween: 12,
+      loop: false,
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      breakpoints: {
+        640: { slidesPerView: 2.2 },
+        1024: { slidesPerView: 4 },
+      }
+    });
+
+    // Add to cart handlers (AJAX stub — adapt to your API endpoint)
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        const id = btn.getAttribute('data-product-id');
+        // optimistic UI or disable button while sending
+        btn.disabled = true;
+        btn.classList.add('opacity-70');
+
+        try {
+          // Replace this fetch URL with your real API endpoint
+          const resp = await fetch("#", {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ product_id: id, qty: 1 })
+          });
+          if (resp.ok) {
+            // show a quick toast (simple)
+            const el = document.createElement('div');
+            el.textContent = 'Added to cart';
+            el.className = 'fixed bottom-6 right-6 bg-green-600 text-white px-4 py-2 rounded shadow';
+            document.body.appendChild(el);
+            setTimeout(()=>el.remove(), 2500);
+          } else {
+            alert('Failed to add to cart');
+          }
+        } catch (err) {
+          console.error(err);
+          alert('Network error');
+        } finally {
+          btn.disabled = false;
+          btn.classList.remove('opacity-70');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

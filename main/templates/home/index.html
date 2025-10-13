@@ -1,0 +1,547 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+<main class="bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-green-700 to-green-500 text-white">
+        <div class="container mx-auto px-4 py-20">
+            <div class="flex items-center justify-between">
+                <div class="max-w-lg">
+                    <h1 class="text-5xl font-semibold mb-4">Buy the best products for your business, all in one place!</h1>
+                    <p class="text-lg mb-8 text-green-100">We have the best quality of fresh foods and fruits to order wholesale from hundreds of suppliers</p>
+                    <button class="bg-white text-green-700 px-8 py-3 rounded-lg font-semibold hover:bg-green-500 hover:text-white transition">EXPLORE NOW</button>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=600&fit=crop" alt="Fresh Food" class="rounded-full w-96 h-96 object-cover shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Icons -->
+    <section class="container mx-auto px-4 -mt-24">
+        <div class="">
+            <h2 class="text-2xl text-white font-normal mb-4">Shop by Categories</h2>
+
+            <div class="relative">
+                <button class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-gray-100">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="grid grid-cols-6 gap-4">
+                    <div class="text-center bg-white rounded-lg shadow-lg p-8 cursor-pointer hover:scale-105 transition">
+                        <div class="bg-green-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-drumstick-bite text-3xl text-green-600"></i>
+                        </div>
+                        <span class="text-sm">Meat</span>
+                    </div>
+                    <div class="text-center bg-white rounded-lg shadow-lg p-8 cursor-pointer hover:scale-105 transition">
+                        <div class="bg-orange-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-carrot text-3xl text-orange-600"></i>
+                        </div>
+                        <span class="text-sm">Vegetables</span>
+                    </div>
+                    <div class="text-center bg-white rounded-lg shadow-lg p-8 cursor-pointer hover:scale-105 transition">
+                        <div class="bg-red-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-apple-alt text-3xl text-red-600"></i>
+                        </div>
+                        <span class="text-sm">Fruit</span>
+                    </div>
+                    <div class="text-center bg-white rounded-lg shadow-lg p-8 cursor-pointer hover:scale-105 transition">
+                        <div class="bg-yellow-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-bread-slice text-3xl text-yellow-600"></i>
+                        </div>
+                        <span class="text-sm">Bakery</span>
+                    </div>
+                    <div class="text-center bg-white rounded-lg shadow-lg p-8 cursor-pointer hover:scale-105 transition">
+                        <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-fish text-3xl text-blue-600"></i>
+                        </div>
+                        <span class="text-sm">Seafood</span>
+                    </div>
+                    <div class="text-center bg-white rounded-lg shadow-lg p-8 cursor-pointer hover:scale-105 transition">
+                        <div class="bg-green-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-leaf text-3xl text-green-600"></i>
+                        </div>
+                        <span class="text-sm">Vegetables</span>
+                    </div>
+                </div>
+
+                <button class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-gray-100">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exclusive Products -->
+    <section class="container mx-auto px-4 py-12">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-3xl font-normal">Exclusive in All in One</h2>
+            <a href="#" class="text-green-600 hover:text-green-700">View All →</a>
+        </div>
+
+        <div class="relative">
+            <button class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-gray-100">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="grid grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition group">
+                    <div class="relative">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">SALE 50%</span>
+                        <img src="https://images.unsplash.com/photo-1588347818036-4c85ab6dbf0f?w=300&h=300&fit=crop" alt="Fresh Meat" class="w-full h-48 object-cover">
+                        <button class="absolute top-2 right-2 bg-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-sm text-gray-500 mb-1">Meat</h3>
+                        <h4 class="font-semibold mb-2">Red Hot Chili Peppers</h4>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-lg font-bold">$10</span>
+                                <span class="text-gray-400 line-through ml-2">$20</span>
+                            </div>
+                            <button class="bg-green-600 text-white px-4 py-1 rounded text-sm hover:bg-green-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition group">
+                    <div class="relative">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">SALE 25%</span>
+                        <img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=300&h=300&fit=crop" alt="Blueberries" class="w-full h-48 object-cover">
+                        <button class="absolute top-2 right-2 bg-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-sm text-gray-500 mb-1">Fruits</h3>
+                        <h4 class="font-semibold mb-2">Fresh Blueberries</h4>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-orange-500 text-sm">★★★★★</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-lg font-bold text-red-600">$15.00</span>
+                                <span class="text-gray-400 line-through ml-2">$20</span>
+                            </div>
+                            <button class="bg-green-600 text-white px-4 py-1 rounded text-sm hover:bg-green-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition group">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1603048297172-c92544798d5a?w=300&h=300&fit=crop" alt="Grilled Chicken" class="w-full h-48 object-cover">
+                        <button class="absolute top-2 right-2 bg-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-sm text-gray-500 mb-1">Meat</h3>
+                        <h4 class="font-semibold mb-2">Grilled Chicken Wings</h4>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold">$23.85</span>
+                            <button class="bg-green-600 text-white px-4 py-1 rounded text-sm hover:bg-green-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition group">
+                    <div class="relative">
+                        <span class="absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded">NEW</span>
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&h=300&fit=crop" alt="Meal Kit" class="w-full h-48 object-cover">
+                        <button class="absolute top-2 right-2 bg-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-sm text-gray-500 mb-1">All Product</h3>
+                        <h4 class="font-semibold mb-2">Gourmet Meal Kit</h4>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold">$45.00</span>
+                            <button class="bg-green-600 text-white px-4 py-1 rounded text-sm hover:bg-green-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-gray-100">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        
+    </section>
+
+    <!-- Top Categories -->
+    <section class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl font-normal mb-6">Top Categories</h2>
+        <div class="grid grid-cols-2 gap-6">
+            <div class="relative rounded-lg overflow-hidden h-64 group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=600&h=400&fit=crop" alt="Meat" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+                    <div class="p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-2">MEAT</h3>
+                        <p class="text-sm mb-3">165 Products</p>
+                        <button class="bg-white text-gray-800 px-4 py-2 rounded text-sm font-semibold hover:bg-gray-100">SHOP NOW</button>
+                    </div>
+                </div>
+            </div>
+            <div class="relative rounded-lg overflow-hidden h-64 group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&h=400&fit=crop" alt="Bread" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+                    <div class="p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-2">BREAD</h3>
+                        <p class="text-sm mb-3">98 Products</p>
+                        <button class="bg-white text-gray-800 px-4 py-2 rounded text-sm font-semibold hover:bg-gray-100">SHOP NOW</button>
+                    </div>
+                </div>
+            </div>
+            <div class="relative rounded-lg overflow-hidden h-64 group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1599599811294-0e79a78d4d8b?w=600&h=400&fit=crop" alt="Spices" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+                    <div class="p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-2">SPICES</h3>
+                        <p class="text-sm mb-3">54 Products</p>
+                        <button class="bg-white text-gray-800 px-4 py-2 rounded text-sm font-semibold hover:bg-gray-100">SHOP NOW</button>
+                    </div>
+                </div>
+            </div>
+            <div class="relative rounded-lg overflow-hidden h-64 group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1587049352846-4a222e784422?w=600&h=400&fit=crop" alt="Berries" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+                    <div class="p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-2">BERRIES</h3>
+                        <p class="text-sm mb-3">72 Products</p>
+                        <button class="bg-white text-gray-800 px-4 py-2 rounded text-sm font-semibold hover:bg-gray-100">SHOP NOW</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Offers for Restaurants -->
+    <section class="container mx-auto px-4 py-12">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-normal text-gray-800">The best offers for Restaurants</h2>
+            <a href="#" class="text-green-600 hover:text-green-700 text-sm font-semibold">View All →</a>
+        </div>
+        
+        <div class="relative">
+            <button class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-gray-100">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="grid grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition group">
+                    <div class="relative p-4">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded font-semibold">Hot</span>
+                        <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                            <i class="far fa-heart text-lg"></i>
+                        </button>
+                        <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=300&h=300&fit=crop" alt="Olive Oil" class="w-full h-48 object-contain mix-blend-multiply">
+                    </div>
+                    <div class="p-4 border-t">
+                        <p class="text-xs text-gray-500 mb-1">Grocery</p>
+                        <h3 class="text-sm font-semibold mb-2 h-10">Green Label Olive Oil (BO, 250g bulk...</h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-lg font-bold text-gray-900">$2.00 $</span>
+                            <span class="text-xs text-gray-400">+ $12.00</span>
+                        </div>
+                        <button class="w-full bg-green-600 text-white py-2 rounded text-sm font-semibold hover:bg-green-700 transition">
+                            ADD TO CART
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition group">
+                    <div class="relative p-4">
+                        <span class="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-1 rounded font-semibold">SALE<br>50% OFF</span>
+                        <span class="absolute top-2 right-10 bg-red-500 text-white text-xs px-2 py-1 rounded font-semibold">Hot</span>
+                        <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                            <i class="far fa-heart text-lg"></i>
+                        </button>
+                        <img src="https://images.unsplash.com/photo-1550828520-4cb496926fc9?w=300&h=300&fit=crop" alt="Seeds" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-4 border-t">
+                        <p class="text-xs text-gray-500 mb-1">Seeds</p>
+                        <h3 class="text-sm font-semibold mb-2 h-10">Seeds (Sunflower Pumpkin and Faux nuts)</h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-lg font-bold text-gray-900">$5.00 $</span>
+                            <span class="text-xs text-gray-400 line-through">$10.00</span>
+                        </div>
+                        <button class="w-full bg-green-600 text-white py-2 rounded text-sm font-semibold hover:bg-green-700 transition">
+                            ADD TO CART
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition group">
+                    <div class="relative p-4">
+                        <span class="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-1 rounded font-semibold">Sale</span>
+                        <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                            <i class="far fa-heart text-lg"></i>
+                        </button>
+                        <img src="https://images.unsplash.com/photo-1599599811294-0e79a78d4d8b?w=300&h=300&fit=crop" alt="Spices" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-4 border-t">
+                        <p class="text-xs text-gray-500 mb-1">Spices</p>
+                        <h3 class="text-sm font-semibold mb-2 h-10">Pulses, Spices (240 100% Natural)</h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-lg font-bold text-gray-900">$7.00 $</span>
+                        </div>
+                        <button class="w-full bg-green-600 text-white py-2 rounded text-sm font-semibold hover:bg-green-700 transition">
+                            ADD TO CART
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition group">
+                    <div class="relative p-4">
+                        <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                            <i class="far fa-heart text-lg"></i>
+                        </button>
+                        <img src="https://images.unsplash.com/photo-1588347818036-4c85ab6dbf0f?w=300&h=300&fit=crop" alt="Chicken" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-4 border-t">
+                        <p class="text-xs text-gray-500 mb-1">Fresh Meat</p>
+                        <h3 class="text-sm font-semibold mb-2 h-10">100% Fresh Halal Lamb Drumstick p...</h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-lg font-bold text-gray-900">$3.50 $</span>
+                        </div>
+                        <button class="w-full bg-green-600 text-white py-2 rounded text-sm font-semibold hover:bg-green-700 transition">
+                            ADD TO CART
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-gray-100">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Alcohol Section -->
+    <section class="container mx-auto px-4 py-12">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-normal text-gray-800">Alcohol</h2>
+            <a href="#" class="text-green-600 hover:text-green-700 text-sm font-semibold flex items-center gap-1">
+                View All 
+                <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+        
+        <div class="relative">
+            <button class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-gray-100">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="grid grid-cols-4 gap-6">
+                <!-- Alcohol Product 1 -->
+                <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition">
+                    <div class="relative p-4">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded font-semibold">Hot</span>
+                        <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                            <i class="far fa-heart text-lg"></i>
+                        </button>
+                        <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=300&fit=crop" alt="Whiskey" class="w-full h-48 object-contain">
+                    </div>
+                    <div class="p-4 border-t">
+                        <p class="text-xs text-gray-500 mb-1">Whiskey</p>
+                        <h3 class="text-sm font-semibold mb-2 h-10">Whiskey Gentleman Single Malt Collection...</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg font-bold text-gray-900">$1.00 $</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alcohol Product 2 -->
+                <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition">
+                    <div class="relative p-4">
+                        <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                            <i class="far fa-heart text-lg"></i>
+                        </button>
+                        <img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=300&h=300&fit=crop" alt="Wine" class="w-full h-48 object-contain">
+                    </div>
+                    <div class="p-4 border-t">
+                        <p class="text-xs text-gray-500 mb-1">Wine</p>
+                        <h3 class="text-sm font-semibold mb-2 h-10">Premium Red Wine Bottle Merlot</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg font-bold text-gray-900">$25.99 $</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alcohol Product 3 -->
+                <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition">
+                    <div class="relative p-4">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded font-semibold">Sale</span>
+                        <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                            <i class="far fa-heart text-lg"></i>
+                        </button>
+                        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=300&h=300&fit=crop" alt="Champagne" class="w-full h-48 object-contain">
+                    </div>
+                    <div class="p-4 border-t">
+                        <p class="text-xs text-gray-500 mb-1">Champagne</p>
+                        <h3 class="text-sm font-semibold mb-2 h-10">Black Wine Bottle Champagne Korset</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg font-bold text-red-600">$18.00 $</span>
+                            <span class="text-xs text-gray-400 line-through">$24.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alcohol Product 4 -->
+                <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition">
+                    <div class="relative p-4">
+                        <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                            <i class="far fa-heart text-lg"></i>
+                        </button>
+                        <img src="https://images.unsplash.com/photo-1527281400156-36cde7f374bc?w=300&h=300&fit=crop" alt="Beer" class="w-full h-48 object-contain">
+                    </div>
+                    <div class="p-4 border-t">
+                        <p class="text-xs text-gray-500 mb-1">Beer</p>
+                        <h3 class="text-sm font-semibold mb-2 h-10">Premium Craft Beer Single Malt</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg font-bold text-gray-900">$99.00 $</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-gray-100">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Household Goods Section -->
+    <section class="container mx-auto px-4 py-12">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-normal text-gray-800">Household goods</h2>
+            <a href="#" class="text-green-600 hover:text-green-700 text-sm font-semibold flex items-center gap-1">
+                View All 
+                <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+        
+        <div class="relative">
+            <button class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-gray-100">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="grid grid-cols-4 gap-6">
+                <!-- Household Product 1 -->
+                <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition">
+                    <div class="relative p-4">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded font-semibold">Hot</span>
+                        <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                            <i class="far fa-heart text-lg"></i>
+                        </button>
+                        <img src="https://images.unsplash.com/photo-1585421514738-01798e348b17?w=300&h=300&fit=crop" alt="Storage" class="w-full h-48 object-contain">
+                    </div>
+                    <div class="p-4 border-t">
+                        <p class="text-xs text-gray-500 mb-1">Storage</p>
+                        <h3 class="text-sm font-semibold mb-2 h-10">Plastic Storage Boxes, Wardrobe...</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg font-bold text-gray-900">$3.00 $</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Household Product 2 -->
+                <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition">
+                    <div class="relative p-4">
+                        <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                            <i class="far fa-heart text-lg"></i>
+                        </button>
+                        <img src="https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=300&h=300&fit=crop" alt="Towels" class="w-full h-48 object-contain">
+                    </div>
+                    <div class="p-4 border-t">
+                        <p class="text-xs text-gray-500 mb-1">Towels</p>
+                        <h3 class="text-sm font-semibold mb-2 h-10">100% Organic Wood, Wooden...</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg font-bold text-gray-900">$9.00 $</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Household Product 3 -->
+                <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition">
+                    <div class="relative p-4">
+                        <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                            <i class="far fa-heart text-lg"></i>
+                        </button>
+                        <img src="https://images.unsplash.com/photo-1600382908644-03c90f0e9f2d?w=300&h=300&fit=crop" alt="Appliance" class="w-full h-48 object-contain">
+                    </div>
+                    <div class="p-4 border-t">
+                        <p class="text-xs text-gray-500 mb-1">Appliances</p>
+                        <h3 class="text-sm font-semibold mb-2 h-10">Vacuum Cleaner Lightweight...</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg font-bold text-gray-900">$99.00 $</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Household Product 4 -->
+                <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition">
+                    <div class="relative p-4">
+                        <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                            <i class="far fa-heart text-lg"></i>
+                        </button>
+                        <img src="https://images.unsplash.com/photo-1584990347449-485b014e0dc9?w=300&h=300&fit=crop" alt="Kitchenware" class="w-full h-48 object-contain">
+                    </div>
+                    <div class="p-4 border-t">
+                        <p class="text-xs text-gray-500 mb-1">Kitchenware</p>
+                        <h3 class="text-sm font-semibold mb-2 h-10">Stainless Steel Tray 14 x 12 inch...</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg font-bold text-gray-900">$8.75 $</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-gray-100">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Promotional Banner -->
+    <section class="container mx-auto px-4 py-12">
+        <div class="relative bg-cover bg-center rounded-xl overflow-hidden h-80" style="background-image: url('https://images.unsplash.com/photo-1596040033229-a0b4a64ec6fc?w=1200&h=400&fit=crop');">
+            <div class="absolute inset-0 bg-white bg-opacity-90"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center pb-8 pt-4">
+                    <div class="flex gap-8 justify-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1596040033229-a0b4a64ec6fc?w=100&h=100&fit=crop" alt="Spice" class="w-20 h-20 rounded-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1599599811294-0e79a78d4d8b?w=100&h=100&fit=crop" alt="Spice" class="w-20 h-20 rounded-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1599599691043-e45cf05293cd?w=100&h=100&fit=crop" alt="Spice" class="w-20 h-20 rounded-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1600459094848-75e1aa5e6cf3?w=100&h=100&fit=crop" alt="Spice" class="w-20 h-20 rounded-full object-cover">
+                    </div>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-2">30% OFF</h2>
+                    <h3 class="text-3xl font-bold text-gray-800 mb-4">FOR ALL SPICES</h3>
+                    <p class="text-gray-600 mb-6 max-w-md mx-auto">This offer is available for a limited time only, so stock up on your favorite spices today!</p>
+                    <button class="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+                        SHOP NOW
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

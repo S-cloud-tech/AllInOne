@@ -1,0 +1,29 @@
+
+<aside class="w-full md:w-64 bg-white rounded-lg shadow-sm p-4">
+    <nav class="space-y-2 text-sm">
+        <a href="{% url "account" %}" class="flex items-center space-x-3 p-3 rounded hover:bg-gray-50">
+            <i class="fas fa-user text-gray-600"></i>
+            <span class="text-gray-700">ACCOUNT INFORMATION</span>
+        </a>
+        <a href="{% url "address_book" %}" class="flex items-center space-x-3 p-3 rounded hover:bg-gray-50">
+            <i class="fas fa-map-marker-alt text-gray-600"></i>
+            <span class="font-medium">ADDRESS BOOK</span>
+        </a>
+        <a href="{% url "order_history" %}" class="flex items-center space-x-3 p-3 rounded hover:bg-gray-50">
+            <i class="fas fa-box text-gray-600"></i>
+            <span class="text-gray-700">MY ORDERS</span>
+        </a>
+        <a href="{% url "payment_method" %}" class="flex items-center space-x-3 p-3 rounded hover:bg-gray-50">
+            <i class="fas fa-credit-card text-gray-600"></i>
+            <span class="text-gray-700">PAYMENT METHOD</span>
+        </a>
+        <a href="{% url "wishlist" %}" class="flex items-center space-x-3 p-3 rounded hover:bg-gray-50">
+            <i class="far fa-heart text-gray-600"></i>
+            <span class="text-gray-700">WISH LIST</span>
+        </a>
+        <a href="{% url "logout" %}" class="flex items-center space-x-3 p-3 rounded hover:bg-gray-50 text-red-600">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>LOG OUT</span>
+        </a>
+    </nav>
+</aside>

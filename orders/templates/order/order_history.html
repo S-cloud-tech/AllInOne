@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="container mx-auto px-4 py-8">
+    <h2 class="text-xl font-bold mb-6">My Account</h2>
+
+    <div class="flex flex-col md:flex-row gap-6">
+        <!-- Sidebar -->
+        {% include "components/sidebar.html" %}
+
+        <!-- Order History Content -->
+        <section class="flex-1 bg-white rounded-lg shadow-sm p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-2xl font-bold text-gray-800">ORDER HISTORY</h1>
+                <button class="text-green-700 text-sm hover:underline">12 months</button>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table class="w-full">
+                    <thead class="bg-gray-50 border-b">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order Number</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tracking Number</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Items</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 text-sm text-gray-900">724600397619</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">29/4/22</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Pending<br><span class="text-xs">09:00 h, 5</span></td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Items<br><span class="text-xs">Delivered</span></td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Delivered</td>
+                            <td class="px-6 py-4">
+                                <button id="openOrderModalBtn" 
+                                    class="px-4 py-2 text-green-600">
+                                    View
+                                </button>
+                            </td>
+                            <td class="px-6 py-4"><a href="#" class="text-green-600 text-sm hover:underline">Repeat the order</a></td>
+                        </tr>
+                        <!-- Add more rows here -->
+                    </tbody>
+                </table>
+
+                <!-- Pagination -->
+                <div class="px-6 py-4 flex items-center justify-center space-x-2 border-t">
+                    <button class="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded">1</button>
+                    <button class="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded">2</button>
+                    <button class="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded">3</button>
+                    <span class="px-2 text-gray-400">...</span>
+                    <button class="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded">15</button>
+                    <button class="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded">
+                        Next <i class="fas fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Modal Overlay -->
+<div id="orderModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <!-- Modal Content -->
+    <div id="orderModalContent" 
+            class="bg-white rounded-lg shadow-lg max-w-3xl w-full mx-4 relative max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 opacity-0">
+        
+        <!-- Modal Header -->
+        <div class="px-6 py-4 flex justify-between items-center">
+            <h2 id="orderStatus" class="text-xl font-semibold text-green-700">Delivered</h2>
+            <button id="closeModalBtn" class="text-gray-400 hover:text-gray-600 text-2xl leading-none">✕</button>
+        </div>
+
+        <!-- Order Info -->
+        <div class="px-6 py-4 border-b">
+            <div class="flex justify-between items-start">
+                <div>
+                    <p class="text-sm font-semibold text-gray-500">ORDER ID: 23467625</p>
+                    <p class="text-sm text-gray-500 mt-1">Placed on:</p>
+                    <p class="text-sm text-gray-700">Agosto 30,2022</p>
+                    <a href="#" class="text-green-600 text-sm hover:underline">Repeat the order</a>
+                </div>
+                <button class="text-sm text-green-600 flex items-center">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    Print this Receipt
+                </button>
+            </div>
+        </div>
+
+        <!-- Order Items -->
+        <div class="px-6 py-4 border-b">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="border-b">
+                        <th class="text-left py-2">Name</th>
+                        <th class="text-left py-2">Code</th>
+                        <th class="text-left py-2">Price</th>
+                        <th class="text-left py-2">Quantity</th>
+                        <th class="text-left py-2">Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b">
+                        <td class="py-3 p-4">Archer Armour Goed 100% Arabica Coffee Beans | 1KG Whole Bean...</td>
+                        <td>1234567812</td>
+                        <td>₦350.5</td>
+                        <td>2</td>
+                        <td class="font-medium">₦1,000.00</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 p-4">1877 Vienna Autogrill (Fruit for Venemous Drip Inflight Smooth...</td>
+                        <td>1234567887</td>
+                        <td class="line-through text-gray-400">₦00.5</td>
+                        <td>3</td>
+                        <td>
+                            <div class="font-medium">₦800 Sale</div>
+                            <div class="text-xs line-through text-gray-400">₦1,000.00 +₦ 00%</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="px-6 py-4 border-b">
+            <div class="flex justify-end">
+                <div class="w-64">
+                    <div class="flex justify-between py-2 text-sm">
+                        <span class="text-gray-600">Subtotal:</span>
+                        <span>₦0=1,000.00 +₦</span>
+                    </div>
+                    <div class="flex justify-between py-2 text-sm">
+                        <span class="text-gray-600">Shipping:</span>
+                        <span>0 ₦</span>
+                    </div>
+                    <div class="flex justify-between py-2 text-sm">
+                        <span class="text-gray-600">Discount:</span>
+                        <span class="text-green-600">FREE</span>
+                    </div>
+                    <div class="flex justify-between py-2 font-semibold text-lg border-t mt-2 pt-2">
+                        <span>Total:</span>
+                        <span>₦01,000.000 ₦</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Information -->
+        <div class="px-6 py-4">
+            <h3 class="font-semibold mb-4">ORDER INFORMATION</h3>
+            <div class="grid md:grid-cols-2 gap-6 text-sm">
+                <div class="border border-gray-200 rounded-lg p-4 relative">
+                    <h4 class="font-medium mb-2 font-semibold flex justify-between">
+                        Shipping Address
+                        <button class="text-green-600 text-xs">Manage Addresses</button>
+                    </h4>
+                    <div class="text-gray-600 space-y-1 text-sm">
+                        <p class="text-gray-600">Name: <span class="text-black">James Mark Ny-Portugas</span></p>
+                        <p class="text-gray-600 mt-2">Address: <span class="text-black">Bhagwan Hardware</span></p>
+                        <p class="text-gray-600">Zip Code: <span class="text-black">1343</span></p>
+                        <p class="text-gray-600">City: <span class="text-black">Manila</span></p>
+                        <p class="text-gray-600">Phone Number: <span class="text-black">+234 081-543-3432-1</span></p>
+                        <p class="text-gray-600">Postal code: <span class="text-black">1234</span></p>
+                        <p class="text-gray-600">Post Address: <span class="text-black">1343 | obhinna</span></p>
+                    </div>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-4 relative">
+                    <h4 class="font-medium mb-2 font-semibold flex justify-between">
+                        Billing Address
+                        <button class="text-green-600 text-xs">Manage Addresses</button>
+                    </h4>
+                    <div class="text-gray-600 space-y-1 text-sm">
+                        <p class="text-gray-600">Name: <span class="text-black">James Mark Ny-Portugas</span></p>
+                        <p class="text-gray-600 mt-2">Address: <span class="text-black">Bhagwan Hardware</span></p>
+                        <p class="text-gray-600">Zip Code: <span class="text-black">1343</span></p>
+                        <p class="text-gray-600">City: <span class="text-black">Manila</span></p>
+                        <p class="text-gray-600">Phone Number: <span class="text-black">+234 081-543-3432-1</span></p>
+                        <p class="text-gray-600">Postal code: <span class="text-black">1234</span></p>
+                        <p class="text-gray-600">Post Address: <span class="text-black">1343 | obhinna</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 mt-6 text-sm">
+                <div>
+                    <h4 class="font-semibold mb-2">Delivery Type</h4>
+                    <p class="text-gray-600">By Drone</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-2">Payment Type</h4>
+                    <p class="text-gray-600">Transfer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Get modal elements
+const orderModal = document.getElementById("orderModal");
+const orderModalContent = document.getElementById("orderModalContent");
+const openOrderModalBtn = document.getElementById("openOrderModalBtn");
+const closeModalBtn = document.getElementById("closeModalBtn");
+
+// ✅ Open modal
+openOrderModalBtn.addEventListener("click", () => {
+    orderModal.classList.remove("hidden");          // Show background
+    setTimeout(() => {
+        orderModalContent.classList.remove("scale-95", "opacity-0");
+        orderModalContent.classList.add("scale-100", "opacity-100");
+    }, 50); // Slight delay for animation
+});
+
+// ✅ Close modal when "X" button is clicked
+closeModalBtn.addEventListener("click", () => {
+    orderModalContent.classList.add("scale-95", "opacity-0");
+    setTimeout(() => {
+        orderModal.classList.add("hidden");
+    }, 200); // Wait for transition
+});
+
+// ✅ Optional: Close modal when clicking outside modal content
+orderModal.addEventListener("click", (e) => {
+    if (e.target === orderModal) {
+        orderModalContent.classList.add("scale-95", "opacity-0");
+        setTimeout(() => {
+            orderModal.classList.add("hidden");
+        }, 200);
+    }
+});
+</script>
+
+{% endblock content %}

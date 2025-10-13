@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- Breadcrumb -->
+    <div class="">
+      <div class="container mx-auto px-4 py-3">
+        <div class="text-sm text-gray-600">
+          <a href="{% url "home" %}" class="hover:text-green-600">Home</a> /
+          <span class="text-gray-800">Shop Addresses</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="text-3xl font-bold text-gray-800 mb-8">Our Shops</h1>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Sidebar -->
+        <div class="lg:col-span-1 space-y-6">
+          <!-- Search -->
+          <div class="bg-white rounded-lg shadow p-4">
+            <div class="flex items-center border rounded px-3 py-2">
+              <input
+                type="text"
+                placeholder="Search for shops..."
+                class="flex-1 outline-none text-sm"
+              />
+              <svg
+                class="w-5 h-5 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Main Store -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="font-bold text-lg mb-4 text-green-600">MAIN STORE</h2>
+            <div class="space-y-2 text-sm">
+              <p class="font-semibold">ADDRESS</p>
+              <p class="text-gray-600">
+                Romana Square no 2, 2nd floor, Sector 1, Bucharest
+              </p>
+              <p class="font-semibold mt-4">PHONE</p>
+              <p class="text-gray-600">+40741 314632</p>
+              <p class="font-semibold mt-4">CONTACT HOURS</p>
+              <p class="text-gray-600">Monday - Saturday<br />08:00-17:00</p>
+              <button
+                class="mt-4 text-green-600 hover:text-green-700 font-semibold"
+              >
+                Show on Map
+              </button>
+            </div>
+          </div>
+
+          <!-- Shop -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="font-bold text-lg mb-4">Shop</h2>
+            <div class="space-y-2 text-sm">
+              <p class="font-semibold">ADDRESS</p>
+              <p class="text-gray-600">
+                Magheru Boulevard, Green Shapes 1361/18
+              </p>
+              <p class="font-semibold mt-4">PHONE</p>
+              <p class="text-gray-600">+378 38819442</p>
+              <p class="font-semibold mt-4">CONTACT HOURS</p>
+              <p class="text-gray-600">Monday - Saturday<br />10:00-17:00</p>
+              <button
+                class="mt-4 text-green-600 hover:text-green-700 font-semibold"
+              >
+                Show on Map
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="lg:col-span-2">
+          <div class="bg-white rounded-lg shadow overflow-hidden">
+            <div class="map-container relative h-[600px] p-8">
+              <!-- Map placeholder with styled background -->
+              <div class="absolute inset-0 opacity-10">
+                <svg class="w-full h-full" viewBox="0 0 800 600">
+                  <!-- Simulated map roads and areas -->
+                  <path
+                    d="M100,100 L700,100 L700,500 L100,500 Z"
+                    fill="#c8e6c9"
+                    opacity="0.3"
+                  />
+                  <path
+                    d="M200,50 L200,550"
+                    stroke="#bdbdbd"
+                    stroke-width="3"
+                  />
+                  <path d="M400,0 L400,600" stroke="#bdbdbd" stroke-width="4" />
+                  <path
+                    d="M600,50 L600,550"
+                    stroke="#bdbdbd"
+                    stroke-width="3"
+                  />
+                  <path
+                    d="M50,200 L750,200"
+                    stroke="#bdbdbd"
+                    stroke-width="3"
+                  />
+                  <path d="M0,350 L800,350" stroke="#bdbdbd" stroke-width="4" />
+                  <circle
+                    cx="300"
+                    cy="250"
+                    r="40"
+                    fill="#a5d6a7"
+                    opacity="0.4"
+                  />
+                </svg>
+              </div>
+
+              <!-- Location Markers -->
+              <div style="top: 35%; left: 35%" class="location-marker">
+                <svg viewBox="0 0 24 36" fill="none">
+                  <path
+                    d="M12 0C5.373 0 0 5.373 0 12c0 9 12 24 12 24s12-15 12-24c0-6.627-5.373-12-12-12z"
+                    fill="#dc2626"
+                  />
+                  <circle cx="12" cy="12" r="4" fill="white" />
+                </svg>
+              </div>
+
+              <div style="top: 55%; left: 52%" class="location-marker">
+                <svg viewBox="0 0 24 36" fill="none">
+                  <path
+                    d="M12 0C5.373 0 0 5.373 0 12c0 9 12 24 12 24s12-15 12-24c0-6.627-5.373-12-12-12z"
+                    fill="#dc2626"
+                  />
+                  <circle cx="12" cy="12" r="4" fill="white" />
+                </svg>
+              </div>
+
+              <div style="top: 45%; left: 65%" class="location-marker">
+                <svg viewBox="0 0 24 36" fill="none">
+                  <path
+                    d="M12 0C5.373 0 0 5.373 0 12c0 9 12 24 12 24s12-15 12-24c0-6.627-5.373-12-12-12z"
+                    fill="#dc2626"
+                  />
+                  <circle cx="12" cy="12" r="4" fill="white" />
+                </svg>
+              </div>
+
+              <!-- Additional decorative markers -->
+              <div
+                style="top: 25%; left: 60%"
+                class="absolute w-3 h-3 bg-blue-500 rounded-full"
+              ></div>
+              <div
+                style="top: 40%; left: 45%"
+                class="absolute w-3 h-3 bg-blue-500 rounded-full"
+              ></div>
+              <div
+                style="top: 60%; left: 40%"
+                class="absolute w-3 h-3 bg-blue-500 rounded-full"
+              ></div>
+              <div
+                style="top: 70%; left: 55%"
+                class="absolute w-3 h-3 bg-blue-500 rounded-full"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}

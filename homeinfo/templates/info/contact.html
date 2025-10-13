@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- Main Content -->
+    <main class="bg-gray-100 py-12">
+        <div class="container mx-auto px-4">
+            <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Contact Information -->
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-8">Contacts</h2>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-gray-800 mb-2">HEAD OFFICE</h3>
+                                <p class="text-gray-600">+234 12 000 433</p>
+                                <p class="text-gray-600">info@allin.com.am</p>
+                            </div>
+
+                            <div>
+                                <h3 class="font-semibold text-gray-800 mb-2">SUPPORT</h3>
+                                <p class="text-gray-600">+974 91 0033123</p>
+                                <p class="text-gray-600">support@allin.com.am</p>
+                            </div>
+
+                            <div>
+                                <h3 class="font-semibold text-gray-800 mb-2">SALES DEPARTMENT</h3>
+                                <p class="text-gray-600">+234 41 001420</p>
+                                <p class="text-gray-600">sales@allin.com.am</p>
+                            </div>
+
+                            <div>
+                                <h3 class="font-semibold text-gray-800 mb-2">PURCHASE DEPARTMENT</h3>
+                                <p class="text-gray-600">+374 91 933444</p>
+                                <p class="text-gray-600">procurement@allin.com.am</p>
+                            </div>
+
+                            <div>
+                                <h3 class="font-semibold text-gray-800 mb-3">SOCIAL MEDIA</h3>
+                                <div class="flex space-x-3">
+                                    <a href="#" class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center hover:bg-blue-700">
+                                        <i class="fab fa-facebook-f text-white text-sm"></i>
+                                    </a>
+                                    <a href="#" class="w-8 h-8 bg-blue-400 rounded flex items-center justify-center hover:bg-blue-500">
+                                        <i class="fab fa-twitter text-white text-sm"></i>
+                                    </a>
+                                    <a href="#" class="w-8 h-8 bg-blue-700 rounded flex items-center justify-center hover:bg-blue-800">
+                                        <i class="fab fa-linkedin-in text-white text-sm"></i>
+                                    </a>
+                                    <a href="#" class="w-8 h-8 bg-pink-500 rounded flex items-center justify-center hover:bg-pink-600">
+                                        <i class="fab fa-instagram text-white text-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-8">Can We Help You?</h2>
+                        
+                        <form class="space-y-4">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm text-gray-600 mb-1">Name</label>
+                                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm text-gray-600 mb-1">Your Company</label>
+                                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500">
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm text-gray-600 mb-1">Phone</label>
+                                    <input type="tel" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm text-gray-600 mb-1">E-mail</label>
+                                    <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm text-gray-600 mb-1">Subject</label>
+                                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm text-gray-600 mb-1">What's on your mind</label>
+                                <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                            </div>
+
+                            <div class="flex items-start space-x-2">
+                                <input type="checkbox" id="privacy" class="mt-1 accent-green-600">
+                                <label for="privacy" class="text-sm text-gray-600">
+                                    I agree to the <a href="#" class="text-green-600 hover:underline">Privacy Policy</a>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="bg-green-600 text-white px-8 py-3 rounded hover:bg-green-700 transition">
+                                SEND
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock content %}
+

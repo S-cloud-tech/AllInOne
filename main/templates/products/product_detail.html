@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="bg-gray-50">
+    <!-- Breadcrumb -->
+    <div class="container mx-auto px-4 py-4">
+        <div class="flex items-center text-sm text-gray-600">
+            <a href="#" class="hover:text-gray-900">Main page</a>
+            <i class="fas fa-chevron-right mx-2 text-xs"></i>
+            <a href="#" class="hover:text-gray-900">Products</a>
+            <i class="fas fa-chevron-right mx-2 text-xs"></i>
+            <span class="text-gray-900">illy Classico Ground Coffee</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 bg-white rounded-lg shadow-sm p-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Product Images -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <div class="relative mb-4">
+                        <span class="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">%</span>
+                        <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=400&h=400&fit=crop" alt="illy Classico Ground Coffee" class="w-full h-auto rounded">
+                        
+                    </div>
+                    <div class="flex justify-center space-x-4">
+                        <button class="border-2 border-green-600 rounded p-2 w-20 h-20">
+                            <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=80&h=80&fit=crop" alt="Thumbnail 1" class="w-full h-full object-cover">
+                        </button>
+                        <button class="border border-gray-300 rounded p-2 w-20 h-20">
+                            <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=80&h=80&fit=crop" alt="Thumbnail 2" class="w-full h-full object-cover">
+                        </button>
+                        <button class="border border-gray-300 rounded p-2 w-20 h-20">
+                            <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=80&h=80&fit=crop" alt="Thumbnail 3" class="w-full h-full object-cover">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Column - Product Details -->
+            <div class="lg:col-span-1">
+                <h1 class="text-2xl font-bold mb-2">illy Classico Ground Coffee (100% arabica) 0.25 l</h1>
+                <div class="flex items-center space-x-2 mb-4">
+                    <span class="text-sm text-gray-600">ID: 42375828</span>
+                    <div class="flex items-center">
+                        <i class="fas fa-star text-yellow-400 text-xs"></i>
+                        <i class="fas fa-star text-yellow-400 text-xs"></i>
+                        <i class="fas fa-star text-yellow-400 text-xs"></i>
+                        <i class="fas fa-star text-yellow-400 text-xs"></i>
+                        <i class="fas fa-star text-gray-300 text-xs"></i>
+                        <span class="ml-1 text-sm text-gray-600">(126)</span>
+                    </div>
+                </div>
+
+                <!-- Size Selection -->
+                <div class="mb-6">
+                    <p class="text-sm font-semibold mb-2">Weight</p>
+                    <div class="flex space-x-2">
+                        <button class="px-4 py-2 border-2 border-green-600 bg-green-50 rounded text-sm font-semibold">0.25g</button>
+                        <button class="px-4 py-2 border border-gray-300 rounded text-sm hover:border-green-600">0.5g</button>
+                        <button class="px-4 py-2 border border-gray-300 rounded text-sm hover:border-green-600">1kg</button>
+                        <button class="px-4 py-2 border border-gray-300 rounded text-sm hover:border-green-600">2kg</button>
+                        <button class="px-4 py-2 border border-gray-300 rounded text-sm hover:border-green-600">5.5kg</button>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between border-b pb-2">
+                        <span class="text-gray-600">Brand Name:</span>
+                        <span class="font-semibold">Classic Roast Blend</span>
+                    </div>
+                    <div class="flex justify-between border-b pb-2">
+                        <span class="text-gray-600">Country/Region of Origin:</span>
+                        <span class="font-semibold">100% ARABICA</span>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="mt-6">
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        I provide optimal information with the guarantee that the product will never be described and sent.
+                    </p>
+                    <p class="text-sm text-gray-700 leading-relaxed mt-2">
+                        Ideal of the purchase option for the customer - 7 selected individual taste - 5 Delicate mixture for 5 products perfectly balanced flavor.
+                    </p>
+                    <p class="text-sm text-gray-700 leading-relaxed mt-2">
+                        Medium Dark Roast a smoothly balanced flavor
+                    </p>
+                    <p class="text-sm text-gray-700 leading-relaxed mt-2">
+                        This was easy to get the pack
+                    </p>
+                    <button class="text-green-600 text-sm font-semibold mt-2">Learn More →</button>
+                </div>
+
+                <!-- Additional Info -->
+                <div class="mt-6 text-sm text-gray-600">
+                    <p>Item #120424</p>
+                    <p class="mt-1">Model #G120424</p>
+                </div>
+
+                <!-- Price and Add to Cart -->
+                <div class="mt-6">
+                    <div class="flex items-baseline space-x-2">
+                        <span class="text-3xl font-bold text-red-600">6,500 ₸</span>
+                        <span class="text-lg text-gray-400 line-through">8,500 ₸</span>
+                        <span class="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">-23%</span>
+                    </div>
+                    <div class="flex items-center space-x-4 mt-4">
+                        <div class="flex items-center border border-gray-300 rounded">
+                            <button class="px-3 py-2 hover:bg-gray-100">-</button>
+                            <input type="text" value="1" class="w-12 text-center border-x border-gray-300">
+                            <button class="px-3 py-2 hover:bg-gray-100">+</button>
+                        </div>
+                        <button class="flex-1 bg-green-600 text-white px-6 py-3 rounded font-semibold hover:bg-green-700 flex items-center justify-center">
+                            <i class="fas fa-shopping-cart mr-2"></i>
+                            ADD TO CART
+                        </button>
+                        <button class="bg-green-100 text-green-600 p-3 rounded hover:bg-green-200">
+                            <i class="fas fa-bolt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Cart Summary -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-sm p-6 sticky top-4">
+                    <h3 class="font-semibold mb-4">Cart (2 items)</h3>
+                    
+                    <!-- Cart Items -->
+                    <div class="space-y-4 mb-4">
+                        <div class="flex space-x-3">
+                            <img src="https://images.unsplash.com/photo-1599639957043-f3aa5c986398?w=60&h=60&fit=crop" alt="Coffee" class="w-16 h-16 rounded object-cover">
+                            <div class="flex-1">
+                                <p class="text-sm font-medium">Fresh from Sulawesi (java ground filter) 1kg</p>
+                                <p class="text-sm text-green-600 font-semibold mt-1">6,500 ₸</p>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="flex space-x-3">
+                            <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=60&h=60&fit=crop" alt="Coffee" class="w-16 h-16 rounded object-cover">
+                            <div class="flex-1">
+                                <p class="text-sm font-medium">Fresh from Sulawesi (java ground filter) 1kg</p>
+                                <p class="text-sm text-green-600 font-semibold mt-1">2,000 ₸</p>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Subtotal -->
+                    <div class="border-t pt-4">
+                        <div class="flex justify-between mb-4">
+                            <span class="font-semibold">Cart Subtotal</span>
+                            <span class="font-bold text-xl">650,000 ₸</span>
+                        </div>
+                        <button class="w-full bg-green-600 text-white py-3 rounded font-semibold hover:bg-green-700 mb-2">
+                            PROCEED TO CHECKOUT
+                        </button>
+                        <button class="w-full border border-green-600 text-green-600 py-3 rounded font-semibold hover:bg-green-50">
+                            View and Edit Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Recommended Products -->
+    <div class="mt-10 p-10">
+        <h2 class="text-xl font-semibold mb-6">Our customers also bought</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="bg-white rounded-lg shadow-sm p-4 relative">
+                <span class="absolute top-2 left-2 bg-orange-500 text-white px-2 py-1 rounded text-xs font-bold">SALE</span>
+                <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                    <i class="far fa-heart"></i>
+                </button>
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=200&h=200&fit=crop" alt="Product" class="w-full h-48 object-cover rounded mb-3">
+                <h3 class="text-sm font-medium mb-2">Nespresso Compatible High Caffeine Double Shot</h3>
+                <div class="flex items-baseline space-x-2">
+                    <span class="text-lg font-bold text-red-600">9,500 ₸</span>
+                    <span class="text-sm text-gray-400 line-through">12,500 ₸</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm p-4 relative">
+                <span class="absolute top-2 left-2 bg-green-600 text-white px-2 py-1 rounded text-xs font-bold">NEW</span>
+                <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                    <i class="far fa-heart"></i>
+                </button>
+                <img src="https://images.unsplash.com/photo-1610632380989-680fe40816e6?w=200&h=200&fit=crop" alt="Product" class="w-full h-48 object-cover rounded mb-3">
+                <h3 class="text-sm font-medium mb-2">Fresh Products Green Coffee Beans</h3>
+                <div class="flex items-baseline space-x-2">
+                    <span class="text-lg font-bold">9,000 ₸</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm p-4 relative">
+                <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                    <i class="far fa-heart"></i>
+                </button>
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=200&h=200&fit=crop" alt="Product" class="w-full h-48 object-cover rounded mb-3">
+                <h3 class="text-sm font-medium mb-2">Kuvitu Artem Costa Coffee Beans Medium Roast</h3>
+                <div class="flex items-baseline space-x-2">
+                    <span class="text-lg font-bold text-red-600">6,500 ₸</span>
+                    <span class="text-sm text-gray-400 line-through">7,500 ₸</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm p-4 relative">
+                <span class="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">SALE</span>
+                <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                    <i class="far fa-heart"></i>
+                </button>
+                <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=200&h=200&fit=crop" alt="Product" class="w-full h-48 object-cover rounded mb-3">
+                <h3 class="text-sm font-medium mb-2">Inspiration American-style: Moka Express 6-Cup</h3>
+                <div class="flex items-baseline space-x-2">
+                    <span class="text-lg font-bold text-red-600">9,500 ₸</span>
+                    <span class="text-sm text-gray-400 line-through">12,500 ₸</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+

@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-2 py-4">
+        <h2 class="text-xl font-bold mb-6">My Account</h2>
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Sidebar -->
+            {% include "components/sidebar.html" %}
+
+            <!-- Address Content -->
+            <main class="flex-1 bg-white rounded-lg shadow-sm p-6">
+                <h1 class="text-2xl font-bold mb-6">Address Book</h1>
+
+                <!-- Main Addresses -->
+                <h2 class="text-lg font-semibold mb-4">MAIN ADDRESSES</h2>
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <!-- Default Shipping Address -->
+                    <div class="border border-gray-200 rounded-lg p-4 relative">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-semibold text-gray-800">Default Shipping Address</h3>
+                            <button class="text-green-600"><i class="fas fa-star"></i></button>
+                        </div>
+                        <div class="text-gray-600 space-y-1 text-sm">
+                            <p class="font-medium">Obinna</p>
+                            <p>Akhro Villa 1st for Palmgroove</p>
+                            <p>City:</p>
+                            <p>State: Rivers</p>
+                            <p>Country: Nigeria</p>
+                            <p>Zip Code: 1343</p>
+                            <p>Phone Number: +234 | 081-543-3432-1</p>
+                            <p>Post Address: 1343 | obhinna</p>
+                        </div>
+                        <button class="text-green-600 text-sm mt-3 hover:underline">Edit Address</button>
+                    </div>
+
+                    <!-- Default Billing Address -->
+                    <div class="border border-gray-200 rounded-lg p-4 relative">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-semibold text-gray-800">Default Billing Address</h3>
+                            <button class="text-green-600"><i class="fas fa-star"></i></button>
+                        </div>
+                        <div class="text-gray-600 space-y-1 text-sm">
+                            <p class="font-medium">Obinna</p>
+                            <p>Akhro Villa 1st for Palmgroove</p>
+                            <p>City:</p>
+                            <p>State: Rivers</p>
+                            <p>Country: Nigeria</p>
+                            <p>Phone Number: +234 | 081</p>
+                            <p>Zip Code: 1343</p>
+                            <p>Post Address: 1343 | obhinna</p>
+                        </div>
+                        <button class="text-green-600 text-sm mt-3 hover:underline">Edit Address</button>
+                    </div>
+                </div>
+
+                <!-- Other Addresses -->
+                <h2 class="text-lg font-semibold mb-4">OTHER ADDRESSES</h2>
+                <div class="space-y-4 mb-6">
+                    <!-- Address 1 -->
+                    <div class="border border-gray-200 rounded-lg p-4 flex justify-between items-start">
+                        <div>
+                            <div class="flex items-center space-x-2 mb-2">
+                                <i class="fas fa-map-marker-alt text-gray-400"></i>
+                                <div>
+                                    <p class="font-medium">SOLA,</p>
+                                    <p class="text-gray-600 text-sm">Akpro Villa, Palmgroove Ikoloba str , 54-17420</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="text-green-600 hover:text-green-700"><i class="fas fa-edit"></i></button>
+                            <button class="text-red-600 hover:text-red-700"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Address 2 -->
+                    <div class="border border-gray-200 rounded-lg p-4 flex justify-between items-start">
+                        <div>
+                            <div class="flex items-center space-x-2 mb-2">
+                                <i class="fas fa-map-marker-alt text-gray-400"></i>
+                                <div>
+                                    <p class="font-medium">Zico Toy</p>
+                                    <p class="text-gray-600 text-sm">Akhro Villa, Palmgroove , 54-17420</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="text-green-600 hover:text-green-700"><i class="fas fa-star-o"></i></button>
+                            <button class="text-green-600 hover:text-green-700"><i class="fas fa-edit"></i></button>
+                            <button class="text-red-600 hover:text-red-700"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <button 
+                    onclick="openModal()" 
+                    class="border border-green-600 text-green-600 px-6 py-2 rounded hover:bg-green-50 transition">
+                    ADD NEW ADDRESS
+                </button>
+            </main>
+
+            
+            <!-- Add New Address Modal -->
+            <div id="addressModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 transition-opacity duration-300">
+                <div class="bg-white rounded-lg shadow-xl w-full max-w-lg mx-4 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+                    <div class="flex justify-between items-center p-6 border-b">
+                        <h2 class="text-xl font-semibold">Add new address</h2>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <form class="p-6 space-y-4">
+                        <!-- Personal Information -->
+                        <div>
+                            <h3 class="font-semibold mb-3">Personal Information</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm text-gray-600 mb-1">First name</label>
+                                    <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm text-gray-600 mb-1">Last name</label>
+                                    <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-gray-600 mb-1">Phone</label>
+                            <input type="tel" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                        </div>
+
+                        <!-- Address -->
+                        <div>
+                            <h3 class="font-semibold mb-3">Address</h3>
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm text-gray-600 mb-1">Country</label>
+                                        <select class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                            <option>Select country</option>
+                                            <option>Nigeria</option>
+                                            <option>Ghana</option>
+                                            <option>Kenya</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm text-gray-600 mb-1">State</label>
+                                        <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm text-gray-600 mb-1">City</label>
+                                        <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm text-gray-600 mb-1">Zip Code</label>
+                                        <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm text-gray-600 mb-1">Street line, apt</label>
+                                    <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Main Shipping Address -->
+                        <div>
+                            <h3 class="font-semibold mb-3">Main Shipping Address</h3>
+                            <div class="space-y-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500">
+                                    <span class="text-sm text-gray-700">Main Shipping Address</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500">
+                                    <span class="text-sm text-gray-700">Main Billing Address</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-green-600 text-white py-3 rounded hover:bg-green-700 transition font-medium">
+                            SAVE ADDRESS
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('addressModal');
+        const modalContent = document.getElementById('addressModalContent');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+
+            // Wait for animation to finish before hiding
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Optional: close modal when clicking the overlay
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+    </script>
+
+
+{% endblock content %}
+
+ 

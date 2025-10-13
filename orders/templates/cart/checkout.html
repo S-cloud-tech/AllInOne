@@ -1,0 +1,407 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-3 gap-8">
+            <!-- Left Section -->
+            <div class="col-span-2">
+                <!-- Progress Steps -->
+                <div class="flex items-center mb-8">
+                    <div class="flex items-center">
+                        <div class="bg-green-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold" id="step1-icon">1</div>
+                        <div class="ml-3 font-semibold" id="step1-text">SHIPPING</div>
+                    </div>
+                    <div class="flex-1 h-1 bg-gray-300 mx-4" id="progress-bar"></div>
+                    <div class="flex items-center">
+                        <div class="bg-gray-300 text-gray-500 w-10 h-10 rounded-full flex items-center justify-center font-bold" id="step2-icon">2</div>
+                        <div class="ml-3 text-gray-400" id="step2-text">PAYMENT</div>
+                    </div>
+                </div>
+
+                <!-- Step 1: Shipping -->
+                <div id="shipping-section">
+                    <!-- Shipping Address -->
+                    <div class="bg-white rounded-lg shadow p-6 mb-6">
+                        <h2 class="text-xl font-bold mb-6">SHIPPING ADDRESS</h2>
+                        
+                        <div class="grid grid-cols-2 gap-6 mb-6">
+                            <!-- Left Address -->
+                            <div class="space-y-3 bg-gray-100 border rounded-md p-4">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Name</span>
+                                    <span class="font-medium">James Maria Ter-Parsiniyan</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Company</span>
+                                    <span class="font-medium">DiAngelo Resturant</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Country</span>
+                                    <span class="font-medium">Armenia</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">City</span>
+                                    <span class="font-medium">Yerevan</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Street, bld., apt.</span>
+                                    <span class="font-medium">Pushba street,12 bld</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Zip Code</span>
+                                    <span class="font-medium">1357</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Phone</span>
+                                    <span class="font-medium">+374 13245679</span>
+                                </div>
+                                <div class="rounded-lg p-4 flex items-center gap-3">
+                                    <div class="bg-green-600 text-white w-6 h-6 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-check text-sm"></i>
+                                    </div>
+                                    <span class="text-sm font-medium">WE WILL SHIP YOUR ORDER HERE</span>
+                                </div>
+                            </div>
+
+                            <!-- Right Address -->
+                            <div class="space-y-3 border rounded-md p-4">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Name</span>
+                                    <span class="font-medium">James Maria Ter-Parsiniyan</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Company</span>
+                                    <span class="font-medium">DiAngelo Resturant</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Country</span>
+                                    <span class="font-medium">Armenia</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">City</span>
+                                    <span class="font-medium">Yerevan</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Street, bld., apt.</span>
+                                    <span class="font-medium">Zakyan street,3 bld</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Zip Code</span>
+                                    <span class="font-medium">1330</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Phone</span>
+                                    <span class="font-medium">+374 13245679</span>
+                                </div>
+                                <button class="border border-green-600 text-green-600 rounded-lg px-6 py-3 font-medium hover:bg-green-50">
+                                    SHIP HERE
+                                </button>
+                            </div>
+                        </div>
+
+                        <button class="mt-4 text-green-600 border border-green-600 rounded-lg px-6 py-2 text-sm hover:bg-green-50">
+                            + ADD NEW ADDRESS
+                        </button>
+
+                        <!-- Shipping Date and Time -->
+                        <h2 class="text-xl font-bold mb-6 mt-6">SHIPPING DATE AND TIME</h2>
+                        
+                        <div class="grid grid-cols-2 gap-6 mb-4">
+                            <div class="relative">
+                                <input type="text" placeholder="Select Date" class="w-full px-4 py-3 border rounded-lg">
+                                <i class="fas fa-calendar absolute right-3 top-4 text-gray-400"></i>
+                            </div>
+                            <div class="relative">
+                                <select class="w-full px-4 py-3 border rounded-lg appearance-none">
+                                    <option>11:00 - 12:00</option>
+                                    <option>12:00 - 13:00</option>
+                                    <option>13:00 - 14:00</option>
+                                </select>
+                                <i class="fas fa-chevron-down absolute right-3 top-4 text-gray-400"></i>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Delivery is free</span>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <button class="border border-gray-300 text-gray-700 rounded-lg px-8 py-3 font-medium hover:bg-gray-50">
+                                BACK
+                            </button>
+                            <button onclick="goToPayment()" class="bg-green-600 text-white rounded-lg px-8 py-3 font-medium hover:bg-green-700">
+                                NEXT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Payment (Hidden Initially) -->
+                <div id="payment-section" class="hidden">
+                    <!-- Payment Method -->
+                    <div class="bg-white rounded-lg shadow p-6 mb-6">
+                        <h2 class="text-xl font-bold mb-6">PAYMENT METHOD</h2>
+                        
+                        <!-- Payment Options -->
+                        <div class="space-y-4 mb-6">
+                            <!-- Cards -->
+                            <div class="border-2 border-green-600 rounded-lg p-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-4">
+                                        <input type="radio" name="payment" checked class="w-5 h-5 text-green-600">
+                                        <div class="flex gap-3">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/120px-American_Express_logo_%282018%29.svg.png" alt="Amex" class="h-8">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/120px-Visa_Inc._logo.svg.png" alt="Visa" class="h-8">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/120px-Mastercard-logo.svg.png" alt="Mastercard" class="h-8">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- POS Terminal -->
+                            <div class="border rounded-lg p-4">
+                                <div class="flex items-center gap-4">
+                                    <input type="radio" name="payment" class="w-5 h-5">
+                                    <span class="font-medium">POS Terminal</span>
+                                </div>
+                            </div>
+
+                            <!-- Bank Transfer -->
+                            <div class="border rounded-lg p-4">
+                                <div class="flex items-center gap-4">
+                                    <input type="radio" name="payment" class="w-5 h-5">
+                                    <span class="font-medium">Bank Transfer</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms -->
+                        <div class="mb-6">
+                            <label class="flex items-start gap-3">
+                                <input type="checkbox" checked class="w-5 h-5 text-green-600 mt-0.5">
+                                <div>
+                                    <p class="font-medium">I agree to the Terms and Conditions</p>
+                                    <p class="text-sm text-gray-500">My billing and shipping address are the same</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Form Fields -->
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <input type="text" placeholder="First Name" class="px-4 py-3 border rounded-lg">
+                            <input type="text" placeholder="Last Name" class="px-4 py-3 border rounded-lg">
+                            <input type="text" placeholder="Country" class="px-4 py-3 border rounded-lg">
+                            <input type="text" placeholder="State" class="px-4 py-3 border rounded-lg">
+                            <input type="text" placeholder="City" class="px-4 py-3 border rounded-lg">
+                            <input type="text" placeholder="Zip Code" class="px-4 py-3 border rounded-lg">
+                            <input type="text" placeholder="Street, bld, apt" class="px-4 py-3 border rounded-lg">
+                            <input type="text" placeholder="Phone" class="px-4 py-3 border rounded-lg">
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex justify-between items-center">
+                            <button onclick="goToShipping()" class="border border-gray-300 text-gray-700 rounded-lg px-8 py-3 font-medium hover:bg-gray-50">
+                                BACK
+                            </button>
+                            <button class="bg-green-600 text-white rounded-lg px-8 py-3 font-medium hover:bg-green-700">
+                                CONFIRM ORDER
+                            </button>
+                        </div>
+
+                        <!-- LLC Info -->
+                        <div class="mt-6 text-center">
+                            <p class="text-sm font-semibold mb-1">LLC "ALLINONE" TIN: 02050469</p>
+                            <p class="text-sm text-gray-600 mb-2">Sales Permit: LFN-0088659</p>
+                            <p class="text-sm text-gray-600 mb-2">RLA 21708102195000I</p>
+                            <button class="text-green-600 flex items-center gap-2 mx-auto hover:underline">
+                                <i class="fas fa-download"></i>
+                                <span>Download</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section - Order Summary -->
+            <div class="space-y-6">
+                <!-- Promo Code (Only on Shipping Step) -->
+                <div id="promo-section" class="bg-white rounded-lg shadow p-4">
+                    <h3 class="text-sm font-semibold mb-3">Have a promo-code?</h3>
+                    <div class="flex gap-2">
+                        <input type="text" placeholder="Promo code" class="flex-1 px-3 py-2 border rounded">
+                        <button class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">APPLY</button>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="bg-white rounded-lg shadow p-4">
+                    <h3 class="text-lg font-bold mb-2">ORDER SUMMARY</h3>
+                    <p class="text-xs text-gray-500 mb-4">3 Item in Cart</p>
+
+                    <!-- Product List -->
+                    <div class="space-y-4 mb-6">
+                        <!-- Product 1 -->
+                        <div class="flex gap-3">
+                            <img src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=100&h=100&fit=crop" alt="Avocado" class="w-16 h-16 object-cover rounded">
+                            <div class="flex-1">
+                                <p class="text-sm font-medium mb-1">Hass Avocados, Ready-to-Eat</p>
+                                <p class="text-xs text-gray-500 line-through">8,000 ₼</p>
+                                <p class="text-base font-bold text-green-600">2,000 ₼</p>
+                                <div class="flex gap-4 text-xs text-gray-500">
+                                    <span>Weight: 1 kg</span>
+                                    <span>Quantity: 1</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="flex gap-3">
+                            <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=100&h=100&fit=crop" alt="Matcha Latte" class="w-16 h-16 object-cover rounded">
+                            <div class="flex-1">
+                                <p class="text-sm font-medium mb-1">Drink Gold Kili Matcha Latte tea instant 10 bags of 25 g</p>
+                                <p class="text-xs text-gray-500 line-through">38,000 ₼</p>
+                                <p class="text-base font-bold text-green-600">18,000 ₼</p>
+                                <div class="flex gap-4 text-xs text-gray-500">
+                                    <span>Weight: 25 g</span>
+                                    <span>Quantity: 1</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="flex gap-3">
+                            <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=100&h=100&fit=crop" alt="Matcha Latte" class="w-16 h-16 object-cover rounded">
+                            <div class="flex-1">
+                                <p class="text-sm font-medium mb-1">Drink Gold Kili Matcha Latte tea instant 10 bags of 25 g</p>
+                                <p class="text-base font-bold">3,000 ₼</p>
+                                <div class="flex gap-4 text-xs text-gray-500">
+                                    <span>Weight: 25 g</span>
+                                    <span>Quantity: 2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Summary Totals -->
+                    <div class="border-t pt-4 space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span>Subtotal:</span>
+                            <span class="font-bold">121,000 ₼</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Sale:</span>
+                            <span class="font-bold text-red-600">4,000 ₼</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Shipping:</span>
+                            <span class="font-bold text-green-600">FREE</span>
+                        </div>
+                        <div class="flex justify-between text-lg font-bold pt-2 border-t">
+                            <span>Total:</span>
+                            <span>117,000 ₼</span>
+                        </div>
+                    </div>
+
+                    <a href="#" class="block text-center text-sm text-green-600 mt-4 hover:underline">View and edit Cart</a>
+                </div>
+
+                <!-- Shipping Address (Only on Payment Step) -->
+                <div id="shipping-info-section" class="bg-white rounded-lg shadow p-4 hidden">
+                    <h3 class="text-base font-bold mb-4">Shipping Address</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Name</span>
+                            <span>James Maria Ter-Parsiniyan</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Company</span>
+                            <span>DiAngelo Restaurant</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Country</span>
+                            <span>Armenia</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">City</span>
+                            <span>Yerevan</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Street, bld., apt.</span>
+                            <span>Pushba street,12 bld</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Zip Code</span>
+                            <span>1357</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Phone</span>
+                            <span>+374 13245679</span>
+                        </div>
+                    </div>
+                    <a href="#" class="block text-center text-sm text-green-600 mt-4 hover:underline">Edit Address</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function goToPayment() {
+            // Hide shipping section
+            document.getElementById('shipping-section').classList.add('hidden');
+            // Show payment section
+            document.getElementById('payment-section').classList.remove('hidden');
+            
+            // Update progress indicators
+            document.getElementById('step1-icon').innerHTML = '<i class="fas fa-check text-sm"></i>';
+            document.getElementById('step1-text').classList.remove('font-semibold', 'text-green-600');
+            document.getElementById('step1-text').classList.add('text-gray-600');
+            
+            document.getElementById('step2-icon').classList.remove('bg-gray-300', 'text-gray-500');
+            document.getElementById('step2-icon').classList.add('bg-green-600', 'text-white');
+            document.getElementById('step2-text').classList.remove('text-gray-400');
+            document.getElementById('step2-text').classList.add('text-green-600', 'font-semibold');
+            
+            document.getElementById('progress-bar').classList.remove('bg-gray-300');
+            document.getElementById('progress-bar').classList.add('bg-green-600');
+            
+            // Hide promo section, show shipping info
+            document.getElementById('promo-section').classList.add('hidden');
+            document.getElementById('shipping-info-section').classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+        
+        function goToShipping() {
+            // Show shipping section
+            document.getElementById('shipping-section').classList.remove('hidden');
+            // Hide payment section
+            document.getElementById('payment-section').classList.add('hidden');
+            
+            // Update progress indicators
+            document.getElementById('step1-icon').textContent = '1';
+            document.getElementById('step1-text').classList.add('font-semibold', 'text-green-600');
+            document.getElementById('step1-text').classList.remove('text-gray-600');
+            
+            document.getElementById('step2-icon').classList.add('bg-gray-300', 'text-gray-500');
+            document.getElementById('step2-icon').classList.remove('bg-green-600', 'text-white');
+            document.getElementById('step2-text').classList.add('text-gray-400');
+            document.getElementById('step2-text').classList.remove('text-green-600', 'font-semibold');
+            
+            document.getElementById('progress-bar').classList.add('bg-gray-300');
+            document.getElementById('progress-bar').classList.remove('bg-green-600');
+            
+            // Show promo section, hide shipping info
+            document.getElementById('promo-section').classList.remove('hidden');
+            document.getElementById('shipping-info-section').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+
+{% endblock content %}  

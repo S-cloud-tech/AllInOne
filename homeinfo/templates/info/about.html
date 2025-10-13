@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="bg-white">
+    <!-- Hero Section -->
+    <section class="h-96 bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=1600');">
+        <div class="container mx-auto px-4 h-full flex items-center">
+            <div class="text-white max-w-xl">
+                <h1 class="text-4xl font-semibold mb-4">About All in One</h1>
+                <p class="text-sm leading-relaxed">
+                    One of the areas of work of the All in One distribution company is in the supply of food products to help in the hotel/catering, restaurants, catering, cafés, bars and retailers. Given the growing number of our customers, the company always delivers fresh, high-quality products every working day.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Work With Section -->
+    <section class="container mx-auto px-4 -mt-20">
+        <div class="">
+            <h2 class="text-2xl text-white font-normal mb-4">Who do we work with?</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Offices and Business Centers -->
+                <div class="text-center p-8 bg-white border border-gray-200 shadow-md rounded-lg hover:shadow-lg transition">
+                    <div class="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-building text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">OFFICES AND BUSINESS CENTERS</h3>
+                    <p class="text-gray-600 text-sm">
+                        We work closely together, good products, complete for our hotels, and business investors
+                    </p>
+                </div>
+
+                <!-- Horeca -->
+                <div class="text-center p-8 bg-white border border-gray-200 shadow-md rounded-lg hover:shadow-lg transition">
+                    <div class="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-utensils text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">HORECA</h3>
+                    <p class="text-gray-600 text-sm">
+                        We sell down food, drinks, hygiene products, and household necessities
+                    </p>
+                </div>
+
+                <!-- Entrepreneurs -->
+                <div class="text-center p-8 bg-white border border-gray-200 shadow-md rounded-lg hover:shadow-lg transition">
+                    <div class="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-handshake text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">ENTREPRENEURS</h3>
+                    <p class="text-gray-600 text-sm">
+                        We cooperate closely with new entrepreneurs groups on a favorable purchase price
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Offer Section -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">What we offer our clients</h2>
+            
+            <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
+                <p>
+                    All in One is a distribution company created to make HoReCa sector activities more organized and convenient. In addition to the range available on the market, we present our own products: pastries, bakery products, meat products, seafood, specialty processed and packaged agricultural products, as well as fruit juices, syrups, teas and waters.
+                </p>
+                
+                <p>
+                    We have the easy and quick order registration procedure through the online platform and/or our partners to save time spent on the purchases and to deal with other areas of business process.
+                </p>
+                
+                <p>
+                    We present the best, innovative model and conditions for B2B cooperation in the Armenian market.
+                </p>
+                
+                <p>
+                    All in One combines experience, knowledge and high quality service, supplying buyers of various activities with only high-quality and fresh products, in a short time and at affordable prices.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-900 to-gray-800 relative overflow-hidden">
+        <div class="absolute right-0 top-0 w-1/2 h-full">
+            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800" alt="Golden cutlery" class="w-full h-full object-cover opacity-60">
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl">
+                <!-- Stat 1 -->
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-red-500 mb-2">70+</div>
+                    <div class="text-gray-300 text-sm uppercase tracking-wide">Happy Customers</div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-red-500 mb-2">6+</div>
+                    <div class="text-gray-300 text-sm uppercase tracking-wide">Years of Experience</div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-red-500 mb-2">125</div>
+                    <div class="text-gray-300 text-sm uppercase tracking-wide">Types of Products</div>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-red-500 mb-2">3</div>
+                    <div class="text-gray-300 text-sm uppercase tracking-wide">Warehouse Locations</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Management Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 mb-12">Our Management</h2>
+            
+            <div class="relative">
+                <!-- Navigation Arrows -->
+                <button class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 transition">
+                    <i class="fas fa-chevron-left text-gray-600"></i>
+                </button>
+                <button class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 transition">
+                    <i class="fas fa-chevron-right text-gray-600"></i>
+                </button>
+
+                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <!-- Manager 1 -->
+                    <div class="text-center">
+                        <div class="bg-gray-800 rounded-lg overflow-hidden mb-4 aspect-square">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400" alt="Harutyn Sargsyan" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-bold text-gray-800 text-sm">HARUTYN SARGSYAN</h3>
+                        <p class="text-gray-600 text-xs">CEO</p>
+                    </div>
+
+                    <!-- Manager 2 -->
+                    <div class="text-center">
+                        <div class="bg-gray-800 rounded-lg overflow-hidden mb-4 aspect-square">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400" alt="Vardges Vagharshakyan" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-bold text-gray-800 text-sm">VARDGES VAGHARSHAKYAN</h3>
+                        <p class="text-gray-600 text-xs">Head of Production Department</p>
+                    </div>
+
+                    <!-- Manager 3 -->
+                    <div class="text-center">
+                        <div class="bg-gray-800 rounded-lg overflow-hidden mb-4 aspect-square">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Rudolf Arakekyan" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-bold text-gray-800 text-sm">RUDOLF ARAKEKYAN</h3>
+                        <p class="text-gray-600 text-xs">Head of Sales Department</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photos from Food Factory Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 mb-12">Photos from our food Factory</h2>
+            
+            <div class="relative">
+                <!-- Navigation Arrows -->
+                <button class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 transition">
+                    <i class="fas fa-chevron-left text-gray-600"></i>
+                </button>
+                <button class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 transition">
+                    <i class="fas fa-chevron-right text-gray-600"></i>
+                </button>
+
+                <div class="rounded-xl overflow-hidden shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1565792668550-b0def4b08ae0?w=1200" alt="Food factory interior with steel tanks" class="w-full h-96 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-8">Shopping Cart</h1>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Cart Items -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <!-- Cart Header -->
+                    <div class="grid grid-cols-12 gap-4 px-6 py-4 bg-white-50 border-b text-sm font-semibold text-gray-700">
+                        <div class="col-span-5">Item</div>
+                        <div class="col-span-2 text-center">Price</div>
+                        <div class="col-span-2 text-center">Quantity</div>
+                        <div class="col-span-2 text-center">Subtotal</div>
+                        <div class="col-span-1"></div>
+                    </div>
+
+                    <!-- Cart Item 1 -->
+                    <div class="grid grid-cols-12 gap-4 px-6 py-6 border-b items-center">
+                        <div class="col-span-5 flex items-center space-x-4">
+                            <img src="https://via.placeholder.com/80x80/FFF4E0/000000?text=Coffee" alt="Coffee" class="w-20 h-20 object-cover rounded">
+                            <div>
+                                <h3 class="font-medium text-gray-900">Kimbo Aroma Gold 100% Arabica coffee beans</h3>
+                                <p class="text-sm text-gray-500">Weight: 1 kg</p>
+                            </div>
+                        </div>
+                        <div class="col-span-2 text-center font-medium">9,000 ₦</div>
+                        <div class="col-span-2">
+                            <div class="flex items-center justify-center space-x-2">
+                                <button class="w-8 h-8 border border-gray-300 rounded hover:bg-gray-50">−</button>
+                                <input type="number" value="2" class="w-12 text-center border border-gray-300 rounded">
+                                <button class="w-8 h-8 border border-gray-300 rounded hover:bg-gray-50">+</button>
+                            </div>
+                        </div>
+                        <div class="col-span-2 text-center font-bold">18,000 ₦</div>
+                        <div class="col-span-1 flex flex-col items-center space-y-2">
+                            <button class="text-gray-400 hover:text-gray-600">✏️</button>
+                            <button class="text-gray-400 hover:text-red-600">🗑️</button>
+                        </div>
+                    </div>
+
+                    <!-- Cart Item 2 -->
+                    <div class="grid grid-cols-12 gap-4 px-6 py-6 border-b items-center">
+                        <div class="col-span-5 flex items-center space-x-4">
+                            <img src="https://via.placeholder.com/80x80/E3F2FD/000000?text=Cream" alt="Cream" class="w-20 h-20 object-cover rounded">
+                            <div>
+                                <h3 class="font-medium text-gray-900">ISHT cream Premstil Chef for whipping 33% 200 g ISHT cream</h3>
+                                <p class="text-sm text-gray-500">Weight: 200 g</p>
+                            </div>
+                        </div>
+                        <div class="col-span-2 text-center font-medium">2,000 ₦</div>
+                        <div class="col-span-2">
+                            <div class="flex items-center justify-center space-x-2">
+                                <button class="w-8 h-8 border border-gray-300 rounded hover:bg-gray-50">−</button>
+                                <input type="number" value="50" class="w-12 text-center border border-gray-300 rounded">
+                                <button class="w-8 h-8 border border-gray-300 rounded hover:bg-gray-50">+</button>
+                            </div>
+                        </div>
+                        <div class="col-span-2 text-center font-bold">100,000 ₦</div>
+                        <div class="col-span-1 flex flex-col items-center space-y-2">
+                            <button class="text-gray-400 hover:text-gray-600">✏️</button>
+                            <button class="text-gray-400 hover:text-red-600">🗑️</button>
+                        </div>
+                    </div>
+
+                    <!-- Cart Item 3 -->
+                    <div class="grid grid-cols-12 gap-4 px-6 py-6 items-center">
+                        <div class="col-span-5 flex items-center space-x-4">
+                            <img src="https://via.placeholder.com/80x80/FFE0B2/000000?text=Chef" alt="Chef" class="w-20 h-20 object-cover rounded">
+                            <div>
+                                <h3 class="font-medium text-gray-900">ISHT cream Premstil Chef for whipping 35%</h3>
+                                <p class="text-sm text-gray-500">Weight: 1 kg</p>
+                            </div>
+                        </div>
+                        <div class="col-span-2 text-center font-medium">3,000 ₦</div>
+                        <div class="col-span-2">
+                            <div class="flex items-center justify-center space-x-2">
+                                <button class="w-8 h-8 border border-gray-300 rounded hover:bg-gray-50">−</button>
+                                <input type="number" value="1" class="w-12 text-center border border-gray-300 rounded">
+                                <button class="w-8 h-8 border border-gray-300 rounded hover:bg-gray-50">+</button>
+                            </div>
+                        </div>
+                        <div class="col-span-2 text-center font-bold">3,000 ₦</div>
+                        <div class="col-span-1 flex flex-col items-center space-y-2">
+                            <button class="text-gray-400 hover:text-gray-600">✏️</button>
+                            <button class="text-gray-400 hover:text-red-600">🗑️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="mt-6 px-6 py-2 border border-gray-300 rounded-md hover:bg-gray-50">CLEAR CART</button>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-bold mb-1">SUMMARY</h2>
+                    <p class="text-sm text-gray-500 mb-6">3 items in Cart</p>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between text-gray-700">
+                            <span>Subtotal:</span>
+                            <span class="font-medium">121,000 ₦</span>
+                        </div>
+                        <div class="flex justify-between text-gray-700">
+                            <span>Sale:</span>
+                            <span class="font-medium">4,000 ₦</span>
+                        </div>
+                        <div class="flex justify-between text-gray-700">
+                            <span>Shipping:</span>
+                            <span class="font-medium text-green-600">FREE</span>
+                        </div>
+                    </div>
+
+                    <div class="border-t pt-4 mb-6">
+                        <div class="flex justify-between text-lg font-bold">
+                            <span>Total:</span>
+                            <span>117,000 ₦</span>
+                        </div>
+                    </div>
+
+                    <a href="{% url "checkout" %}">
+                        <button class="w-full py-3 bg-green-600 text-white rounded-md font-medium hover:bg-green-700 transition">
+                            PROCEED TO CHECKOUT
+                        </button>
+                    </a>
+
+                    <button class="w-full mt-4 text-sm text-gray-600 hover:text-gray-900">
+                        Check Out with Multiple Addresses
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="p-8">
+                    <button onclick="closeModal()" class="float-right text-gray-400 hover:text-gray-600 text-2xl">×</button>
+                    <h2 class="text-2xl font-bold mb-4">How It Works?</h2>
+                    <p class="text-gray-600 mb-6">To make an order, you need to create an account or log in.</p>
+                    <p class="text-gray-600 mb-8">The confirmation of the registration will be done after finding out the authenticity of the data. It will take some time after that we will send login and password to your email.</p>
+                    <div class="flex space-x-4">
+                        <button onclick="closeModal()" class="px-6 py-2 border border-gray-300 rounded-md hover:bg-gray-50">LOG IN</button>
+                        <button class="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">CREATE AN ACCOUNT</button>
+                    </div>
+                </div>
+                <div class="bg-gray-100 p-8 flex items-center justify-center">
+                    <img src="https://via.placeholder.com/400x300/F5F5F5/000000?text=Shopping+Cart" alt="Shopping illustration" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+
+        // Show modal on page load (optional)
+        // setTimeout(() => {
+        //     document.getElementById('modal').classList.remove('hidden');
+        // }, 1000);
+    </script>
+{% endblock content %}
