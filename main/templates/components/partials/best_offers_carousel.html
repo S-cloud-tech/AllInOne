@@ -1,0 +1,81 @@
+{% load static %}
+
+<!-- Best Offers for Restaurants -->
+<section class="container mx-auto px-4 py-12">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-normal text-gray-800">The best offers for Restaurants</h2>
+        <a href="category_detail" class="text-green-600 hover:text-green-700 text-sm font-semibold">View All →</a>
+    </div>
+    
+    <div class="relative">
+        <button id="offersPrevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-gray-100">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <!-- Scroll Container -->
+        <div id="bestOfferCarousel"
+            class="flex overflow-x-auto gap-6 scroll-smooth no-scrollbar p-6">
+            {% for product in best_offers %}
+            <div class="min-w-[250px] bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition group">
+                <div class="relative p-4">
+                    {% if product.is_hot %}
+                    <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded font-semibold">Hot</span>
+                    {% elif product.is_new %}
+                    <span class="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-1 rounded font-semibold">New</span>
+                    {% endif %}
+                    <img src="{% if product.image %}{{ product.image.url }}{% else %}https://placehold.co/50x50{% endif %}" alt="{{ product.name }}" class="w-full h-48 object-contain">
+                </div>
+                <div class="p-4 border-t">
+                    <p class="text-xs text-gray-500 mb-1">{{ product.category.name }}</p>
+                    <h3 class="text-sm font-semibold mb-2 h-10">{{ product.name }}</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-lg font-bold text-gray-900">${{ product.price }}</span>
+                        {% if product.old_price %}
+                        <span class="text-xs line-through text-gray-400">${{ product.old_price }}</span>
+                        {% endif %}
+                    </div>
+                    <button class="w-full bg-green-600 text-white py-2 rounded text-sm font-semibold hover:bg-green-700 transition">
+                        ADD TO CART
+                    </button>
+                </div>
+            </div>
+            {% empty %}
+                <p class="p-4">No best offers available.</p>
+            {% endfor %}
+        </div>
+
+        <button id="offersNextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-gray-100">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</section>
+
+
+<!-- Carousel JS -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.getElementById('offersCarousel');
+    const prevBtn = document.getElementById('offersPrevBtn');
+    const nextBtn = document.getElementById('offersNextBtn');
+    const scrollAmount = 320; // adjust for card width
+
+    nextBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+
+    prevBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+});
+</script>
+
+<!-- Hide scrollbar -->
+<style>
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+</style>

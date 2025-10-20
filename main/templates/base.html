@@ -54,6 +54,14 @@
     .gradient-bg {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
+    /* Hide scrollbar for better look */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
     
   </style>
 </head>
@@ -69,16 +77,29 @@
         </a>
         <div class="hidden md:flex items-center text-black px-3 py-1 rounded text-sm">
           <span class="mr-2"><i class="fa-solid fa-phone text-grey"></i></span>
-          <span>{{ site_phone|default:"+234-807-4259-720" }}</span>
+          <span>{{ general_info.phone_number}}</span>
         </div>
       </div>
 
       <!-- Search -->
-      <form action="#" method="get" class="flex-1 mx-6 max-w-2xl">
+      <form action="{% url "search" %}" method="get" class="flex-1 mx-6 max-w-2xl">
         <div class="relative">
-          <input name="q" class="w-full border rounded-md pl-4 pr-32 py-3 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="I want to buy..." />
-          <button type="submit" class="absolute right-1 top-1/2 -translate-y-1/2  px-4 py-2 rounded-full text-sm"><i class="fa-brands fa-searchengin text-green-600"></i></button>
+          <input 
+            id="searchInput" 
+            name="q" 
+            class="w-full border rounded-md pl-4 pr-32 py-3 focus:outline-none focus:ring-2 
+              focus:ring-green-500" 
+              placeholder="I want to buy..."
+              value="{{ request.GET.q|default:'' }}"
+              autocomplete="off" 
+          />
+          <button type="submit" class="absolute right-1 top-1/2 -translate-y-1/2  px-4 py-2 rounded-full text-sm">
+            <i class="fa-brands fa-searchengin text-green-600"></i>
+          </button>
         </div>
+
+        <!-- Suggestion Dropdown -->
+        <div id="searchSuggestions" class="absolute w-2/3 bg-white border border-gray-200 rounded-lg mt-2 shadow-lg hidden z-50"></div>
       </form>
 
       <div class="flex items-center gap-4">
@@ -96,20 +117,53 @@
   <nav class="bg-green-700 text-white">
     <div class="container mx-auto px-4 md:px-8">
       <div class="flex items-center gap-24 py-2">
-        <button class="px-3 py-2 bg-green-800 rounded text-sm hidden md:inline-flex items-center gap-2"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" stroke-linejoin="round"/></svg>All Categories</button>
+        <button id="openCategoriesModal" class="px-3 py-2 bg-green-800 rounded text-sm hidden md:inline-flex items-center gap-2">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          All Categories
+        </button>
+
+        <!-- Modal Overlay -->
+        <div id="categoriesModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+          <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
+            
+            <!-- Close Button -->
+            <button id="closeCategoriesModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+              <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">All Categories</h3>
+            
+            <!-- Category List -->
+            <ul class="space-y-2 max-h-80 overflow-y-auto">
+              {% for category in categories %}
+              <li class="flex items-center gap-2 p-2 rounded hover:bg-gray-100 cursor-pointer">
+                <i class="{{ category.icon }} text-green-600"></i>
+                <a href="{% url 'category_detail' category.slug %}" class="text-gray-800 hover:text-green-700">
+                  {{ category.name }}
+                </a>
+              </li>
+              {% empty %}
+              <li class="text-gray-500 text-sm">No categories found.</li>
+              {% endfor %}
+            </ul>
+
+          </div>
+        </div>
 
         <ul class="hidden md:flex gap-24 items-center text-sm">
-          <li><a href="#" class="hover:underline">Exclusive</a></li>
-          <li><a href="{% url "catalog" %}" class="hover:underline">Products</a></li>
-          <li><a href="#" class="hover:underline">Alcohol</a></li>
-          <li><a href="#" class="hover:underline">Beverages</a></li>
-          <li><a href="#" class="hover:underline">Household goods</a></li>
-          <li>
-            <a href="#" class="bg-yellow-500 text-green-900 px-3 py-1 rounded flex items-center gap-2">
-              <span>DISCOUNT</span>
-              <i class="fas fa-percentage"></i>
-            </a>
-          </li>
+            <li><a href="{% url "exclusive_products" %}" class="hover:underline">Exclusive</a></li>
+            <li><a href="{% url "products" %}" class="hover:underline">Products</a></li>
+            <li><a href="{% url 'category_products' 'alcohol' %}" class="hover:underline">Alcohol</a></li>
+            <li><a href="{% url 'category_products' 'beverages' %}" class="hover:underline">Beverages</a></li>
+            <li><a href="{% url 'category_products' 'household' %}" class="hover:underline">Household goods</a></li>
+            <li>
+              <a href="#" class="bg-yellow-500 text-green-900 px-3 py-1 rounded flex items-center gap-2">
+                <span>DISCOUNT</span>
+                <i class="fas fa-percentage"></i>
+              </a>
+            </li>
         </ul>
 
         <!-- small category chips (mobile scroll) -->
@@ -139,11 +193,11 @@
       <div>
         <h5 class="font-semibold mb-2">SHOP</h5>
         <ul class="text-sm text-gray-400 space-y-1">
-          <li><a href="#" class="hover:underline">Exclusive</a></li>
-          <li><a href="#" class="hover:underline">Products</a></li>
-          <li><a href="#" class="hover:underline">Beverages</a></li>
-          <li><a href="#" class="hover:underline">Alcohol</a></li>
-          <li><a href="#" class="hover:underline">Household goods</a></li>
+          <li><a href="{% url 'exclusive_products' %}" class="hover:underline">Exclusive</a></li>
+          <li><a href="{% url "products" %}" class="hover:underline">Products</a></li>
+          <li><a href="{% url 'category_products' 'beverages' %}" class="hover:underline">Beverages</a></li>
+          <li><a href="{% url 'category_products' 'alcohol' %}" class="hover:underline">Alcohol</a></li>
+          <li><a href="{% url 'category_products' 'household' %}" class="hover:underline">Household goods</a></li>
         </ul>
       </div>
 
@@ -175,10 +229,10 @@
       <div>
         <h5 class="font-semibold mb-2">SOCIAL MEDIA</h5>
         <div class="flex gap-4 text-lg">
-            <a href=""><i class="fa-brands fa-facebook"></i></a>
-            <a href=""><i class="fa-brands fa-x-twitter"></i></a>
-            <a href=""><i class="fa-brands fa-linkedin"></i></a>
-            <a href=""><i class="fa-brands fa-telegram"></i></a>
+            <a href="{{ general_info.facebook_url }}"><i class="fa-brands fa-facebook"></i></a>
+            <a href="{{ general_info.twitter_url }}"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="{{ general_info.linkedIn_url }}"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="{{ general_info.telegram_url }}"><i class="fa-brands fa-telegram"></i></a>
         </div>
       </div>
     </div>
@@ -193,6 +247,42 @@
 
 <!-- Minimal JS: Swiper init + simple add-to-cart click (AJAX placeholder) -->
 <script>
+  const searchInput = document.getElementById('searchInput');
+  const suggestionsBox = document.getElementById('searchSuggestions');
+
+  searchInput.addEventListener('input', async () => {
+    const query = searchInput.value.trim();
+
+    if (query.length < 2) {
+      suggestionsBox.innerHTML = '';
+      suggestionsBox.classList.add('hidden');
+      return;
+    }
+
+    try {
+      const response = await fetch(`/ajax/search/?q=${encodeURIComponent(query)}`);
+      const data = await response.json();
+
+      if (data.results.length > 0) {
+        suggestionsBox.innerHTML = data.results
+          .map(item => `
+            <a href="/product/${item.slug}/" class="flex items-center gap-3 p-3 hover:bg-gray-50 border-b last:border-none">
+              <img src="${item.image || 'https://via.placeholder.com/40'}" class="w-10 h-10 rounded object-cover" alt="${item.name}">
+              <div>
+                <p class="text-sm font-medium text-gray-800">${item.name}</p>
+                <p class="text-xs text-green-600 font-semibold">$${item.price}</p>
+              </div>
+            </a>
+          `).join('');
+        suggestionsBox.classList.remove('hidden');
+      } else {
+        suggestionsBox.innerHTML = `<p class="p-3 text-gray-500 text-sm">No results found</p>`;
+        suggestionsBox.classList.remove('hidden');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  });
   document.addEventListener('DOMContentLoaded', function () {
     // Hero Swiper
     new Swiper('.hero-swiper', {
@@ -211,6 +301,18 @@
         640: { slidesPerView: 2.2 },
         1024: { slidesPerView: 4 },
       }
+    });
+
+    const modal = document.getElementById('categoriesModal');
+    const openBtn = document.getElementById('openCategoriesModal');
+    const closeBtn = document.getElementById('closeCategoriesModal');
+
+    openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
+    closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+
+    // Close when clicking outside modal
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.add('hidden');
     });
 
     // Add to cart handlers (AJAX stub — adapt to your API endpoint)

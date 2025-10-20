@@ -1,0 +1,23 @@
+{% load static %}
+
+<!-- Top Categories -->
+<section class="container mx-auto px-4 py-12">
+    <h2 class="text-2xl font-normal mb-6">Top Categories</h2>
+    <div class="grid grid-cols-2 gap-6">
+        {% for category in top_categories %}
+        <div class="relative rounded-lg overflow-hidden h-64 group cursor-pointer">
+            <img src="{% if category.image %}{{ category.image.url }}{% else %}https://placehold.co/50x50{% endif %}" alt="{{ category.name }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+                <div class="p-6 text-white">
+                    <h3 class="text-2xl font-bold mb-2">{{ category.name }}</h3>
+                    <p class="text-sm mb-3">{{ category.product_count }} Products</p>
+                    <a href="{% url 'category_detail' category.slug %}" class="bg-white text-gray-800 px-4 py-2 rounded text-sm font-semibold hover:bg-gray-100">SHOP NOW</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <p class="text-gray-500 col-span-4 text-center">No top categories yet.</p>
+        {% endfor %}
+    </div>
+</section>
+
