@@ -3,6 +3,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import JsonResponse
 from .models import *
+from orders.cart import Cart
 
 # Create your views here.
 def home(request):
@@ -23,12 +24,13 @@ def home(request):
         category__name__icontains="Beer",
         is_on_sale=True
     ).order_by("-discount_percent")[:8]
-    alcohol_products = Product.objects.filter(category__name__iexact='Alcohol').order_by('-id')[:4]
-    household_products = Product.objects.filter(category__name__iexact='Household').order_by('-id')[:4]
+    alcohol_products = Product.objects.filter(category__slug='alcohol')[:4]
+    household_products = Product.objects.filter(category__slug='household')[:4]
+    cart = Cart(request)
 
     context = {
         'categories': categories,
-        'products':product,
+        'products':products,
         'featured_categories': featured_categories,
         "exclusive_products": exclusive_products,
         "top_categories": top_categories,
@@ -36,6 +38,7 @@ def home(request):
         "offers": offers,
         "alcohol_products": alcohol_products,
         "household_products": household_products,
+        "cart": cart,
     }
     return render(request, 'home/index.html', context)
 
@@ -55,8 +58,8 @@ def discount_products(request):
     products = Product.objects.filter(discount_percent__gt=0)
     return render(request, "products/products.html", {"products": products, "section": "discount"})
 
-def product_detail(request, slug):
-    product = get_object_or_404(Product, slug=slug)
+def product_detail(request, slug, pk):
+    product = get_object_or_404(Product, slug=slug, pk=pk)
     related_products = Product.objects.filter(category=product.category).exclude(id=product.id)[:4]
     context = {
         'product': product,

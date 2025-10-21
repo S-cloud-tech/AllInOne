@@ -125,9 +125,11 @@
                                 {% endfor %}
                             </div>
                             
-                            <button class="w-full bg-white border border-gray-300 rounded py-2 text-sm hover:bg-green-600 hover:text-white transition">
-                                <i class="fas fa-shopping-bag mr-2"></i>Add to Cart
-                            </button>
+                            <a href="{% url "orders:cart_add" product.id %}">
+                                <button class="w-full bg-white border border-gray-300 rounded py-2 text-sm hover:bg-green-600 hover:text-white transition">
+                                    <i class="fas fa-shopping-bag mr-2"></i>Add to Cart
+                                </button>
+                            </a>
                         </div>
                     {% empty %}
                         <p>No products found.</p>

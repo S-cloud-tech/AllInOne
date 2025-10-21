@@ -29,10 +29,11 @@
                         
                         <div class="grid grid-cols-2 gap-6 mb-6">
                             <!-- Left Address -->
+                             {% for address in addresses %}{% endfor %}
                             <div class="space-y-3 bg-gray-100 border rounded-md p-4">
                                 <div class="flex justify-between text-sm">
                                     <span class="text-gray-600">Name</span>
-                                    <span class="font-medium">James Maria Ter-Parsiniyan</span>
+                                    <span class="font-medium">{{ address.name }}</span>
                                 </div>
                                 <div class="flex justify-between text-sm">
                                     <span class="text-gray-600">Company</span>
@@ -254,33 +255,6 @@
                                 <div class="flex gap-4 text-xs text-gray-500">
                                     <span>Weight: 1 kg</span>
                                     <span>Quantity: 1</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Product 2 -->
-                        <div class="flex gap-3">
-                            <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=100&h=100&fit=crop" alt="Matcha Latte" class="w-16 h-16 object-cover rounded">
-                            <div class="flex-1">
-                                <p class="text-sm font-medium mb-1">Drink Gold Kili Matcha Latte tea instant 10 bags of 25 g</p>
-                                <p class="text-xs text-gray-500 line-through">38,000 ₼</p>
-                                <p class="text-base font-bold text-green-600">18,000 ₼</p>
-                                <div class="flex gap-4 text-xs text-gray-500">
-                                    <span>Weight: 25 g</span>
-                                    <span>Quantity: 1</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Product 3 -->
-                        <div class="flex gap-3">
-                            <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=100&h=100&fit=crop" alt="Matcha Latte" class="w-16 h-16 object-cover rounded">
-                            <div class="flex-1">
-                                <p class="text-sm font-medium mb-1">Drink Gold Kili Matcha Latte tea instant 10 bags of 25 g</p>
-                                <p class="text-base font-bold">3,000 ₼</p>
-                                <div class="flex gap-4 text-xs text-gray-500">
-                                    <span>Weight: 25 g</span>
-                                    <span>Quantity: 2</span>
                                 </div>
                             </div>
                         </div>

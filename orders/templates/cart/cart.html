@@ -21,92 +21,51 @@
                         <div class="col-span-1"></div>
                     </div>
 
-                    <!-- Cart Item 1 -->
-                    <div class="grid grid-cols-12 gap-4 px-6 py-6 border-b items-center">
-                        <div class="col-span-5 flex items-center space-x-4">
-                            <img src="https://via.placeholder.com/80x80/FFF4E0/000000?text=Coffee" alt="Coffee" class="w-20 h-20 object-cover rounded">
-                            <div>
-                                <h3 class="font-medium text-gray-900">Kimbo Aroma Gold 100% Arabica coffee beans</h3>
-                                <p class="text-sm text-gray-500">Weight: 1 kg</p>
+                    <!-- Cart Item -->
+                     {% for item in cart %}
+                        <div class="grid grid-cols-12 gap-4 px-6 py-6 border-b items-center">
+                            <div class="col-span-5 flex items-center space-x-4">
+                                <img src="{% if item.product.image %}{{ item.product.image.url }}{% else %}https://placehold.co/50x50{% endif %}" alt="{{ item.product.name }}" class="w-20 h-20 object-cover rounded">
+                                <div>
+                                    <h3 class="font-medium text-gray-900">{{ item.product.name }}</h3>
+                                    <p class="text-sm text-gray-500">{{ item.product.description|truncatewords:8 }}</p>
+                                </div>
+                            </div>
+                            <div class="col-span-2 text-center font-medium">{{ item.product.price }} ₦</div>
+                            <div class="col-span-2">
+                                <div class="flex items-center justify-center space-x-2">
+                                    <a href="{% url 'orders:cart_remove' item.product.id %}" class="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50">−</a>
+                                    <input type="number" value="{{ item.quantity }}" class="w-12 text-center border border-gray-300 rounded" readonly>
+                                    <a href="{% url 'orders:cart_add' item.product.id %}" class="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50">+</a>
+                                </div>
+                            </div>
+                            <div class="col-span-2 text-center font-bold">{{ item.total_price }} ₦</div>
+                            <div class="col-span-1 flex flex-col items-center space-y-2">
+                                <a href="{% url 'orders:cart_remove' item.product.id %}" class="text-gray-400 hover:text-red-600">🗑️</a>
                             </div>
                         </div>
-                        <div class="col-span-2 text-center font-medium">9,000 ₦</div>
-                        <div class="col-span-2">
-                            <div class="flex items-center justify-center space-x-2">
-                                <button class="w-8 h-8 border border-gray-300 rounded hover:bg-gray-50">−</button>
-                                <input type="number" value="2" class="w-12 text-center border border-gray-300 rounded">
-                                <button class="w-8 h-8 border border-gray-300 rounded hover:bg-gray-50">+</button>
-                            </div>
-                        </div>
-                        <div class="col-span-2 text-center font-bold">18,000 ₦</div>
-                        <div class="col-span-1 flex flex-col items-center space-y-2">
-                            <button class="text-gray-400 hover:text-gray-600">✏️</button>
-                            <button class="text-gray-400 hover:text-red-600">🗑️</button>
-                        </div>
-                    </div>
-
-                    <!-- Cart Item 2 -->
-                    <div class="grid grid-cols-12 gap-4 px-6 py-6 border-b items-center">
-                        <div class="col-span-5 flex items-center space-x-4">
-                            <img src="https://via.placeholder.com/80x80/E3F2FD/000000?text=Cream" alt="Cream" class="w-20 h-20 object-cover rounded">
-                            <div>
-                                <h3 class="font-medium text-gray-900">ISHT cream Premstil Chef for whipping 33% 200 g ISHT cream</h3>
-                                <p class="text-sm text-gray-500">Weight: 200 g</p>
-                            </div>
-                        </div>
-                        <div class="col-span-2 text-center font-medium">2,000 ₦</div>
-                        <div class="col-span-2">
-                            <div class="flex items-center justify-center space-x-2">
-                                <button class="w-8 h-8 border border-gray-300 rounded hover:bg-gray-50">−</button>
-                                <input type="number" value="50" class="w-12 text-center border border-gray-300 rounded">
-                                <button class="w-8 h-8 border border-gray-300 rounded hover:bg-gray-50">+</button>
-                            </div>
-                        </div>
-                        <div class="col-span-2 text-center font-bold">100,000 ₦</div>
-                        <div class="col-span-1 flex flex-col items-center space-y-2">
-                            <button class="text-gray-400 hover:text-gray-600">✏️</button>
-                            <button class="text-gray-400 hover:text-red-600">🗑️</button>
-                        </div>
-                    </div>
-
-                    <!-- Cart Item 3 -->
-                    <div class="grid grid-cols-12 gap-4 px-6 py-6 items-center">
-                        <div class="col-span-5 flex items-center space-x-4">
-                            <img src="https://via.placeholder.com/80x80/FFE0B2/000000?text=Chef" alt="Chef" class="w-20 h-20 object-cover rounded">
-                            <div>
-                                <h3 class="font-medium text-gray-900">ISHT cream Premstil Chef for whipping 35%</h3>
-                                <p class="text-sm text-gray-500">Weight: 1 kg</p>
-                            </div>
-                        </div>
-                        <div class="col-span-2 text-center font-medium">3,000 ₦</div>
-                        <div class="col-span-2">
-                            <div class="flex items-center justify-center space-x-2">
-                                <button class="w-8 h-8 border border-gray-300 rounded hover:bg-gray-50">−</button>
-                                <input type="number" value="1" class="w-12 text-center border border-gray-300 rounded">
-                                <button class="w-8 h-8 border border-gray-300 rounded hover:bg-gray-50">+</button>
-                            </div>
-                        </div>
-                        <div class="col-span-2 text-center font-bold">3,000 ₦</div>
-                        <div class="col-span-1 flex flex-col items-center space-y-2">
-                            <button class="text-gray-400 hover:text-gray-600">✏️</button>
-                            <button class="text-gray-400 hover:text-red-600">🗑️</button>
-                        </div>
-                    </div>
+                    {% empty %}
+                    <p class="p-6 text-gray-500">Your cart is empty.</p>
+                    {% endfor %}
                 </div>
 
-                <button class="mt-6 px-6 py-2 border border-gray-300 rounded-md hover:bg-gray-50">CLEAR CART</button>
+                <a href="{% url "orders:cart_clear" %}">
+                    <button class="mt-6 px-6 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
+                        CLEAR CART
+                    </button>
+                </a>
             </div>
 
             <!-- Order Summary -->
             <div class="lg:col-span-1">
                 <div class="bg-white rounded-lg shadow-sm p-6">
                     <h2 class="text-xl font-bold mb-1">SUMMARY</h2>
-                    <p class="text-sm text-gray-500 mb-6">3 items in Cart</p>
+                    <p class="text-sm text-gray-500 mb-6">{{ cart|length }} item(s) in Cart</p>
                     
                     <div class="space-y-4 mb-6">
                         <div class="flex justify-between text-gray-700">
                             <span>Subtotal:</span>
-                            <span class="font-medium">121,000 ₦</span>
+                            <span class="font-medium">{{ cart.subtotal }} ₦</span>
                         </div>
                         <div class="flex justify-between text-gray-700">
                             <span>Sale:</span>
@@ -121,11 +80,11 @@
                     <div class="border-t pt-4 mb-6">
                         <div class="flex justify-between text-lg font-bold">
                             <span>Total:</span>
-                            <span>117,000 ₦</span>
+                            <span>{{ cart.get_total_price }} ₦</span>
                         </div>
                     </div>
 
-                    <a href="{% url "checkout" %}">
+                    <a href="{% url "orders:checkout" %}">
                         <button class="w-full py-3 bg-green-600 text-white rounded-md font-medium hover:bg-green-700 transition">
                             PROCEED TO CHECKOUT
                         </button>

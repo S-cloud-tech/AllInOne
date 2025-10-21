@@ -1,0 +1,40 @@
+<section class="container mx-auto px-4 py-8">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-normal text-gray-800">{{ category_name }}</h2>
+        {% if category_slug == "exclusive" %}
+            <a href="{% url 'main:exclusive_products' %}" class="text-green-600 hover:text-green-700 text-sm font-semibold flex items-center gap-1">
+                View All 
+                <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+        {% else %}
+            <a href="{% url 'main:category_detail' slug=category_slug %}" class="text-green-600 hover:text-green-700 text-sm font-semibold flex items-center gap-1">
+                View All 
+                <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+        {% endif %}
+
+    </div>
+    
+    <div class="relative p-4">
+        <!-- Left Scroll Button -->
+        <button class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-gray-100">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <!-- Product Carousel -->
+        <div class="grid grid-flow-col auto-cols-[25%] gap-2 mb-4 overflow-x-auto scroll-smooth scrollbar-hide">
+            {% for product in products %}
+                <a href="{% url 'main:product_details' product.slug product.id %}">
+                    {% include 'components/product_card.html' %}
+                </a>
+            {% empty %}
+                <p class="p-8">No {{ category_name|lower }} products available.</p>
+            {% endfor %}
+        </div>
+        
+        <!-- Right Scroll Button -->
+        <button class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-gray-100">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</section>

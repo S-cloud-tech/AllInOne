@@ -18,6 +18,8 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
 
 
   <style>
@@ -72,7 +74,7 @@
   <div class="container mx-auto px-4 md:px-8">
     <div class="flex items-center justify-between py-4">
       <div class="flex items-center gap-4">
-        <a href="{% url "home" %}" class="flex items-center gap-3">
+        <a href="{% url "main:home" %}" class="flex items-center gap-3">
           <img src="" alt="AllInOne" class="h-10"/>
         </a>
         <div class="hidden md:flex items-center text-black px-3 py-1 rounded text-sm">
@@ -82,7 +84,7 @@
       </div>
 
       <!-- Search -->
-      <form action="{% url "search" %}" method="get" class="flex-1 mx-6 max-w-2xl">
+      <form action="{% url "main:search" %}" method="get" class="flex-1 mx-6 max-w-2xl">
         <div class="relative">
           <input 
             id="searchInput" 
@@ -103,12 +105,63 @@
       </form>
 
       <div class="flex items-center gap-4">
-        <a href="{% url "login" %}" class="px-4 py-2 border border-green-600 rounded-md text-sm">Log in</a>
-        <a href="{% url "signup" %}" class="bg-green-600 text-white px-4 py-2 rounded-md text-sm">Create account</a>
-        <a href="{% url "wishlist" %}" ><i class="fa-regular fa-heart text-lg"></i></a>
-        <a href="{% url "cart" %}" class="ml-2">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 7h13l-2-7M10 21a1 1 0 100-2 1 1 0 000 2zm7 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
-        </a>
+        <a href="{% url "users:login" %}" class="px-4 py-2 border border-green-600 rounded-md text-sm">Log in</a>
+        <a href="{% url "users:signup" %}" class="bg-green-600 text-white px-4 py-2 rounded-md text-sm">Create account</a>
+        <a href="{% url "main:wishlist" %}" ><i class="fa-regular fa-heart text-lg"></i></a>
+        <div x-data="{ open: false }" class="relative">
+          <!-- Cart Icon -->
+          <button @click="open = !open" class="relative">
+              <svg class="w-6 h-6 text-gray-700 hover:text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" 
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 7h13l-2-7M10 21a1 1 0 100-2 
+                          1 1 0 000 2zm7 0a1 1 0 100-2 1 1 0 000 2z"/>
+              </svg>
+              <!-- Optional cart count -->
+              <span class="absolute -top-2 -right-2 bg-green-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">{{ cart|length }}</span>
+          </button>
+
+          <!-- Dropdown -->
+          <div
+              x-show="open"
+              @click.outside="open = false"
+              x-transition
+              class="absolute right-0 mt-3 w-80 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-50"
+          >
+            <h3 class="font-semibold mb-3">Cart ({{ cart|length }} items)</h3>
+            
+            <div class="space-y-4 mb-4 max-h-60 overflow-y-auto">
+                <!-- Item -->
+                {% for item in cart %}
+                  <div class="flex space-x-3">
+                      <img src="{% if item.product.image %}{{ item.product.image.url }}{% else %}https://placehold.co/50x50{% endif %}" alt="{{ item.product.name }}" class="w-16 h-16 rounded object-cover">
+                      <div class="flex-1">
+                          <p class="text-sm font-medium">{{ item.product.name }}{{ item.product.unit }}</p>
+                          <p class="text-sm text-green-600 font-semibold mt-1">{{ item.product.price }}</p>
+                      </div>
+                      <button class="text-gray-400 hover:text-gray-600">
+                          <i class="fas fa-trash"></i>
+                      </button>
+                  </div>
+                {% empty %}
+                  <p class="p-6 text-gray-500">Your cart is empty.</p>
+                {% endfor %}
+            </div>
+
+            <div class="border-t pt-4">
+                <div class="flex justify-between mb-4">
+                    <span class="font-semibold">Cart Subtotal</span>
+                    <span class="font-bold text-xl">{{ cart.get_total_price }} ₸</span>
+                </div>
+                <a href="{% url 'orders:checkout' %}" class="block w-full bg-green-600 text-white py-3 rounded font-semibold hover:bg-green-700 text-center mb-2">
+                    PROCEED TO CHECKOUT
+                </a>
+                <a href="{% url 'orders:cart_detail' %}" class="block w-full border border-green-600 text-green-600 py-3 rounded font-semibold hover:bg-green-50 text-center">
+                    View and Edit Cart
+                </a>
+            </div>
+        </div>
+      </div>
+
       </div>
     </div>
   </div>
@@ -140,7 +193,7 @@
               {% for category in categories %}
               <li class="flex items-center gap-2 p-2 rounded hover:bg-gray-100 cursor-pointer">
                 <i class="{{ category.icon }} text-green-600"></i>
-                <a href="{% url 'category_detail' category.slug %}" class="text-gray-800 hover:text-green-700">
+                <a href="{% url 'main:category_detail' category.slug %}" class="text-gray-800 hover:text-green-700">
                   {{ category.name }}
                 </a>
               </li>
@@ -153,11 +206,11 @@
         </div>
 
         <ul class="hidden md:flex gap-24 items-center text-sm">
-            <li><a href="{% url "exclusive_products" %}" class="hover:underline">Exclusive</a></li>
-            <li><a href="{% url "products" %}" class="hover:underline">Products</a></li>
-            <li><a href="{% url 'category_products' 'alcohol' %}" class="hover:underline">Alcohol</a></li>
-            <li><a href="{% url 'category_products' 'beverages' %}" class="hover:underline">Beverages</a></li>
-            <li><a href="{% url 'category_products' 'household' %}" class="hover:underline">Household goods</a></li>
+            <li><a href="{% url "main:exclusive_products" %}" class="hover:underline">Exclusive</a></li>
+            <li><a href="{% url "main:products" %}" class="hover:underline">Products</a></li>
+            <li><a href="{% url 'main:category_products' 'alcohol' %}" class="hover:underline">Alcohol</a></li>
+            <li><a href="{% url 'main:category_products' 'beverages' %}" class="hover:underline">Beverages</a></li>
+            <li><a href="{% url 'main:category_products' 'household' %}" class="hover:underline">Household goods</a></li>
             <li>
               <a href="#" class="bg-yellow-500 text-green-900 px-3 py-1 rounded flex items-center gap-2">
                 <span>DISCOUNT</span>
@@ -193,36 +246,36 @@
       <div>
         <h5 class="font-semibold mb-2">SHOP</h5>
         <ul class="text-sm text-gray-400 space-y-1">
-          <li><a href="{% url 'exclusive_products' %}" class="hover:underline">Exclusive</a></li>
-          <li><a href="{% url "products" %}" class="hover:underline">Products</a></li>
-          <li><a href="{% url 'category_products' 'beverages' %}" class="hover:underline">Beverages</a></li>
-          <li><a href="{% url 'category_products' 'alcohol' %}" class="hover:underline">Alcohol</a></li>
-          <li><a href="{% url 'category_products' 'household' %}" class="hover:underline">Household goods</a></li>
+          <li><a href="{% url 'main:exclusive_products' %}" class="hover:underline">Exclusive</a></li>
+          <li><a href="{% url "main:products" %}" class="hover:underline">Products</a></li>
+          <li><a href="{% url 'main:category_products' 'beverages' %}" class="hover:underline">Beverages</a></li>
+          <li><a href="{% url 'main:category_products' 'alcohol' %}" class="hover:underline">Alcohol</a></li>
+          <li><a href="{% url 'main:category_products' 'household' %}" class="hover:underline">Household goods</a></li>
         </ul>
       </div>
 
       <div>
         <h5 class="font-semibold mb-2">INFORMATION</h5>
         <ul class="text-sm text-gray-400 space-y-1">
-          <li><a href="{% url "about" %}" class="hover:underline">About Us</a></li>
-          <li><a href="{% url "shop" %}" class="hover:underline">Our Shops</a></li>
-          <li><a href="{% url "news" %}" class="hover:underline">News</a></li>
+          <li><a href="{% url "homeinfo:about" %}" class="hover:underline">About Us</a></li>
+          <li><a href="{% url "homeinfo:shop" %}" class="hover:underline">Our Shops</a></li>
+          <li><a href="{% url "homeinfo:news" %}" class="hover:underline">News</a></li>
         </ul>
       </div>
 
       <div>
         <h5 class="font-semibold mb-2">SUPPORT</h5>
         <ul class="text-sm text-gray-400 space-y-1">
-          <li><a href="{% url "faq" %}" class="hover:underline">FAQ</a></li>
-          <li><a href="{% url "contact" %}" class="hover:underline">Contact Us</a></li>
+          <li><a href="{% url "homeinfo:faq" %}" class="hover:underline">FAQ</a></li>
+          <li><a href="{% url "homeinfo:contact" %}" class="hover:underline">Contact Us</a></li>
         </ul>
       </div>
 
       <div>
         <h5 class="font-semibold mb-2">LEGAL</h5>
         <ul class="text-sm text-gray-400 space-y-1">
-          <li><a href="{% url "p&p" %}" class="hover:underline">Privacy Policy</a></li>
-          <li><a href="{% url "t&c" %}" class="hover:underline">Terms & Conditions</a></li>
+          <li><a href="{% url "homeinfo:p&p" %}" class="hover:underline">Privacy Policy</a></li>
+          <li><a href="{% url "homeinfo:t&c" %}" class="hover:underline">Terms & Conditions</a></li>
           <li><a href="#" class="hover:underline">Delivery Information</a></li>
         </ul>
       </div>

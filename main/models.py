@@ -94,7 +94,6 @@ class ProductImage(models.Model):
     def __str__(self):
         return f"Image for {self.product.name}"
 
-
 class Offer(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
@@ -127,6 +126,9 @@ class Inventory(models.Model):
     stock_quantity = models.PositiveIntegerField(default=0)
     reorder_level = models.PositiveIntegerField(default=5)
     last_updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = "Inventories"
 
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="reviews")
