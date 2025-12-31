@@ -46,7 +46,7 @@
 
     {% top_categories 4 %}
 
-    {% best_offers_for_restaurants 6 %}
+    {% comment %} {% best_offers_for_restaurants 6 %} {% endcomment %}
 
     <!-- Alcohol Section -->
     {% include "components/category_section.html" with category_name="Alcohol" category_slug="alcohol" products=alcohol_products %}

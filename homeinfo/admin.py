@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(GeneralInfo)
 admin.site.register(HeroSection)
 admin.site.register(HomepageSection)
+admin.site.register(Post)

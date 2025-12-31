@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<form method="post" action={% url "main:add_category" %}>
+    {% csrf_token %}
+    {{ form.as_p }}
+</form>
+
+{% endblock content %}
+

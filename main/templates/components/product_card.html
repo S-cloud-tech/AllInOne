@@ -1,5 +1,5 @@
 
-<div class="bg-white rounded-lg p-4 hover:shadow-lg transition group relative">
+{% comment %} <div class="bg-white rounded-lg p-4 hover:shadow-lg transition group relative">
     {% if product.is_on_sale %}
         <span class="absolute top-4 left-4 bg-blue-600 text-white text-xs px-2 py-1 rounded">Sale</span>
     {% elif product.is_hot %}
@@ -35,9 +35,9 @@
             <i class="fas fa-shopping-bag mr-2"></i>Add to Cart
         </button>
     </a>
-</div>
+</div> {% endcomment %}
 
-{% comment %} <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col">
+<div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col">
     <!-- Product Image & Tags -->
     <div class="relative p-4">
         {% if product.is_on_sale %}
@@ -48,8 +48,8 @@
             <span class="absolute top-3 left-3 bg-green-500 text-white text-xs px-2 py-1 rounded">New</span>
         {% endif %}
 
-        <a href="{% url 'main:wishlist'  %}">
-            <button class="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition">
+        <a href="{% url 'main:toggle_like' product.uuid %}">
+            <button class="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition hover:scale-105">
                 <i class="far fa-heart text-lg"></i>
             </button>
         </a>
@@ -84,10 +84,10 @@
         </div>
 
         <!-- Add to Cart Button -->
-        <a href="{% url 'orders:cart_add' product.id %}">
+        <a href="{% url 'orders:cart_add' product.uuid %}">
             <button class="w-full bg-green-600 text-white rounded py-2 text-sm font-medium hover:bg-green-700 transition">
                 <i class="fas fa-shopping-bag mr-2"></i>Add to Cart
             </button>
         </a>
     </div>
-</div> {% endcomment %}
+</div>

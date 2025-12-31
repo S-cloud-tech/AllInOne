@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import JsonResponse
+from django.urls import reverse
 from .models import *
+from .forms import *
 from orders.cart import Cart
 
 # Create your views here.
@@ -13,13 +15,13 @@ def home(request):
         is_featured=True, 
         is_active=True
     )
-    exclusive_products = Product.objects.filter(is_hot=True)[:4]
+    exclusive_products = Product.objects.filter(is_exclusive=True)[:4]
     top_categories = Category.objects.filter(is_top_category=True)[:4]
-    best_offers = Product.objects.filter(
-        is_active=True
-        ).filter(
-            models.Q(is_hot=True) | models.Q(is_new=True)
-        ).order_by('-id')[:4]
+    # best_offers = Product.objects.filter(
+    #     is_active=True
+    #     ).filter(
+    #         models.Q(is_hot=True) | models.Q(is_new=True)
+    #     ).order_by('-id')[:4]
     offers = Product.objects.filter(
         category__name__icontains="Beer",
         is_on_sale=True
@@ -34,7 +36,7 @@ def home(request):
         'featured_categories': featured_categories,
         "exclusive_products": exclusive_products,
         "top_categories": top_categories,
-        "best_offers": best_offers,
+        # "best_offers": best_offers,
         "offers": offers,
         "alcohol_products": alcohol_products,
         "household_products": household_products,
@@ -50,14 +52,6 @@ def product(request):
     }
     return render(request, 'products/products.html', context)
 
-def exclusive_products(request):
-    products = Product.objects.filter(is_exclusive=True)
-    return render(request, "products/products.html", {"products": products, "section": "exclusive"})
-
-def discount_products(request):
-    products = Product.objects.filter(discount_percent__gt=0)
-    return render(request, "products/products.html", {"products": products, "section": "discount"})
-
 def product_detail(request, slug, pk):
     product = get_object_or_404(Product, slug=slug, pk=pk)
     related_products = Product.objects.filter(category=product.category).exclude(id=product.id)[:4]
@@ -66,6 +60,14 @@ def product_detail(request, slug, pk):
         'related_products': related_products,
     }
     return render(request, 'products/product_detail.html', context)
+
+def exclusive_products(request):
+    products = Product.objects.filter(is_exclusive=True)
+    return render(request, "products/products.html", {"products": products, "section": "exclusive"})
+
+def discount_products(request):
+    products = Product.objects.filter(discount_percent__gt=0)
+    return render(request, "products/products.html", {"products": products, "section": "discount"})
 
 def search(request):
     query = request.GET.get('q', '')
@@ -223,6 +225,36 @@ def catalog(request):
         }
         return render(request, 'products/products.html', context)
 
-def wishlist(request):
-    return render(request, 'products/wishlist.html')
+def toggle_like(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    # liked, created = LikedProduct.objects.get_or_create(user=request.user, product=product)
+    liked, created = LikedProduct.objects.get_or_create(product=product)
+    if not created:
+        liked.delete()
+        return JsonResponse({"liked": False})
+    return JsonResponse({"liked": True})
 
+def wishlist(request):
+    products = Product.objects.filter(is_active=True)
+    categories = Category.objects.filter(is_active=True)
+    # liked = LikedProduct.objects.filter(user=request.user).select_related("product")
+ 
+
+    context = {
+        "products": products,
+        "categories": categories,
+        # "liked_products": [item.product for item in liked],
+    }
+    return render(request, 'products/wishlist.html', context)
+
+def add_category(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse("catalog"))
+        else:
+            return render(request, "forms/add_category.html", {"form": form})
+    else:
+        form = CategoryForm(request.POST)
+    return render(request, "forms/add_category.html", {"form": form})

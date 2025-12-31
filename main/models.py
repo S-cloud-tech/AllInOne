@@ -3,8 +3,10 @@ from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils import timezone
 from django_countries.fields import CountryField
+import uuid
 
 class Category(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(unique=True, blank=True)
     description = models.TextField(blank=True)
@@ -30,6 +32,7 @@ class Category(models.Model):
         return self.name
 
 class Brand(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100, blank=True)
     logo = models.ImageField(upload_to="brands/", blank=True, null=True)
 
@@ -42,7 +45,7 @@ class Product(models.Model):
         ('KG','KG'),
         ('PACK', 'PACK'), 
     ]
-
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True, related_name="products")
@@ -86,6 +89,7 @@ class Product(models.Model):
         return self.name
 
 class ProductImage(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="images")
     image = models.ImageField(upload_to="products/gallery/")
     alt_text = models.CharField(max_length=255, blank=True)
@@ -94,7 +98,9 @@ class ProductImage(models.Model):
     def __str__(self):
         return f"Image for {self.product.name}"
 
+
 class Offer(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='offers/')
@@ -108,6 +114,7 @@ class Offer(models.Model):
 
 
 class Tag(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(unique=True, blank=True)
     products = models.ManyToManyField(Product, related_name="tags", blank=True)
@@ -121,16 +128,15 @@ class Tag(models.Model):
         return self.name
 
 class Inventory(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     # merchant = models.ForeignKey(MerchantProfile, on_delete=models.CASCADE, related_name="inventory")
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     stock_quantity = models.PositiveIntegerField(default=0)
     reorder_level = models.PositiveIntegerField(default=5)
     last_updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
-        verbose_name_plural = "Inventories"
-
 class Review(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="reviews")
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])

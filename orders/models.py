@@ -6,6 +6,7 @@ from django_countries.fields import CountryField
 
 # Create your models here.
 class CartItem(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     # user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="cart")
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
@@ -34,6 +35,7 @@ class Order(models.Model):
         ("refunded", "Refunded"),
     ]
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     # user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="orders")
     order_number = models.CharField(max_length=100, unique=True)
     shipping_address = models.ForeignKey('ShippingAddress', on_delete=models.SET_NULL, null=True)
@@ -46,6 +48,7 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="items")
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
@@ -53,7 +56,8 @@ class OrderItem(models.Model):
 
 
 class ShippingAddress(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='shipping_addresses')
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    # user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='shipping_addresses')
     full_name = models.CharField(max_length=255)
     company = models.CharField(max_length=255, blank=True, null=True)
     country = CountryField(blank_label='(select country)')
@@ -74,6 +78,7 @@ class Payment(models.Model):
         ("paystack", "Paystack"),
     ]
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name="payment")
     transaction_id = models.CharField(max_length=255)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -83,6 +88,7 @@ class Payment(models.Model):
 
 
 class Refund(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="refunds")
     reason = models.TextField()
     approved = models.BooleanField(default=False)

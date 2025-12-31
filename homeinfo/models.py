@@ -1,12 +1,23 @@
 from django.db import models
+from users.models import User
+import uuid
 
 # Create your models here.
 class GeneralInfo(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     # site_name = models.CharField(max_length=10)
     # site_logo = models.ImageField()
     location = models.CharField(max_length=255, default='Port Harcourt, Nigeria')
     email = models.EmailField()
     phone_number = models.CharField(max_length=15, default='+2348074259720')
+    head_office_email = models.EmailField(null=True)
+    head_office_phone_number = models.CharField(max_length=15, default='+2348074259720')
+    support_office_email = models.EmailField(null=True)
+    support_office_phone_number = models.CharField(max_length=15, default='+2348074259720')
+    sales_office_email = models.EmailField(null=True)
+    sales_office_phone_number = models.CharField(max_length=15, default='+2348074259720')
+    purchase_office_email = models.EmailField(null=True)
+    purchase_office_phone_number = models.CharField(max_length=15, default='+2348074259720')
     linkedIn_url = models.URLField(blank=True, null=True)
     twitter_url = models.URLField(blank=True, null=True)
     github_url = models.URLField(blank=True, null=True)
@@ -28,6 +39,7 @@ class GeneralInfo(models.Model):
         }
 
 class HeroSection(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255, blank=True)
     button_text = models.CharField(max_length=50, default="EXPLORE NOW")
@@ -39,6 +51,7 @@ class HeroSection(models.Model):
         return self.title
 
 class HomepageSection(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=150)
     subtitle = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='homepage/')
@@ -52,4 +65,16 @@ class HomepageSection(models.Model):
     def __str__(self):
         return self.title
 
+
+class Post(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = models.CharField(max_length=200)
+    subtitle = models.CharField(max_length=200)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
 
