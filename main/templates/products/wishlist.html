@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mx-auto py-16">
+  <h2 class="text-3xl font-bold mb-6">Your Liked Products ❤️</h2>
+
+  {% if wishlist %}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {% for product in liked_products %}
+        <div class="bg-white rounded-lg border border-gray-200 shadow p-4">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-48 object-cover rounded mb-3">
+          <h3 class="text-lg font-semibold">{{ product.name }}</h3>
+          <p class="text-sm text-gray-600">{{ product.description|truncatewords:15 }}</p>
+          <a href="{% url 'product_detail' product.id %}" class="text-blue-600 hover:underline mt-2 block">View Product</a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-gray-500">You haven’t liked any products yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

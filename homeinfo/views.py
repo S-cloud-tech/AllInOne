@@ -1,11 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import *
 
 # Create your views here.
-def news(request):
-    return render(request, 'blog/blog.html')
+def news(request,):
+    posts = Post.objects.all()
+    context = {
+        'posts':posts,
+    }
+    return render(request, 'blog/blog.html', context)
 
-def news_detail(request):
-    return render(request, 'blog/blog_article.html')
+def news_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    context = {
+        'post': post
+    }
+    return render(request, 'blog/blog_article.html', context)
 
 def our_shops(request):
     return render(request, 'info/shops.html')

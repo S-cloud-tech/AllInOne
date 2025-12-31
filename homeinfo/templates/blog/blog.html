@@ -11,145 +11,34 @@
 
         <!-- Breadcrumb -->
         <div class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
-            <a href="{% url "home" %}" class="hover:text-gray-700">🏠</a>
+            <a href="{% url "main:home" %}" class="hover:text-gray-700">🏠</a>
             <span>/</span>
             <span>News</span>
         </div>
 
         <!-- News Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            <!-- News Card 1 -->
-            <a href="{% url "news_detail" %}">
-                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                    <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=500&h=300&fit=crop" alt="Berries" class="w-full h-48 object-cover">
-                    <div class="p-5">
-                        <p class="text-xs text-gray-500 mb-2">18.02.2022 14:00:00</p>
-                        <h3 class="font-semibold text-gray-800 mb-2 hover:text-green-600 cursor-pointer">
-                            Mauris commodo nec nisl sed vulputate. Suspendisse mauris velit...
-                        </h3>
-                        <p class="text-sm text-gray-600 line-clamp-3">
-                            Mauris commodo nec nisl sed vulputate. Suspendisse mauris velit, pretium blandit in, tristique et magna. Maecenas...
-                        </p>
-                    </div>
-                </div>
-            </a>
-
-            <!-- News Card 2 -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=500&h=300&fit=crop" alt="Fresh Food" class="w-full h-48 object-cover">
-                    <div class="absolute top-3 left-3 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                        FRESH FOOD
-                    </div>
-                </div>
-                <div class="p-5">
-                    <p class="text-xs text-gray-500 mb-2">18.02.2022 14:00:00</p>
-                    <h3 class="font-semibold text-gray-800 mb-2 hover:text-green-600 cursor-pointer">
-                        Mauris commodo nec nisl sed vulputate. Suspendisse mauris velit...
-                    </h3>
-                    <p class="text-sm text-gray-600 line-clamp-3">
-                        Mauris commodo nec nisl sed vulputate. Suspendisse mauris velit, pretium blandit in, tristique et magna. Maecenas...
-                    </p>
-                </div>
-            </div>
-
-            <!-- News Card 3 -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=500&h=300&fit=crop" alt="Food Display" class="w-full h-48 object-cover">
-                <div class="p-5">
-                    <p class="text-xs text-gray-500 mb-2">18.02.2022 14:00:00</p>
-                    <h3 class="font-semibold text-gray-800 mb-2 hover:text-green-600 cursor-pointer">
-                        Mauris commodo nec nisl sed vulputate. Suspendisse mauris velit...
-                    </h3>
-                    <p class="text-sm text-gray-600 line-clamp-3">
-                        Suspendisse auctor mauris quis vulputate vulputate. Mauris eu auctor convallis...
-                    </p>
-                </div>
-            </div>
-
-            <!-- News Card 4 -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=300&fit=crop" alt="Coffee" class="w-full h-48 object-cover">
-                <div class="p-5">
-                    <p class="text-xs text-gray-500 mb-2">18.02.2022 14:00:00</p>
-                    <h3 class="font-semibold text-gray-800 mb-2 hover:text-green-600 cursor-pointer">
-                        Mauris commodo nec nisl sed vulputate. Suspendisse mauris velit...
-                    </h3>
-                    <p class="text-sm text-gray-600 line-clamp-3">
-                        Mauris commodo nec nisl sed vulputate. Suspendisse mauris velit, pretium blandit in...
-                    </p>
-                </div>
-            </div>
-
-            <!-- News Card 5 -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <img src="https://images.unsplash.com/photo-1464454709131-ffd692591ee5?w=500&h=300&fit=crop" alt="Pfanner Products" class="w-full h-48 object-cover">
-                <div class="p-5">
-                    <p class="text-xs text-gray-500 mb-2">18.02.2022 14:00:00</p>
-                    <h3 class="font-semibold text-gray-800 mb-2 hover:text-green-600 cursor-pointer">
-                        Mauris commodo nec nisl sed vulputate. Suspendisse mauris velit...
-                    </h3>
-                    <p class="text-sm text-gray-600 line-clamp-3">
-                        Mauris commodo nec nisl sed vulputate. Suspendisse mauris velit, pretium blandit in...
-                    </p>
-                </div>
-            </div>
-
-            <!-- News Card 6 -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <img src="https://images.unsplash.com/photo-1606787620819-8bdf0c44c293?w=500&h=300&fit=crop" alt="Gold Emblem" class="w-full h-48 object-cover">
-                <div class="p-5">
-                    <p class="text-xs text-gray-500 mb-2">18.02.2022 14:00:00</p>
-                    <h3 class="font-semibold text-gray-800 mb-2 hover:text-green-600 cursor-pointer">
-                        Mauris commodo nec nisl sed vulputate. Suspendisse mauris velit...
-                    </h3>
-                    <p class="text-sm text-gray-600 line-clamp-3">
-                        Mauris commodo nec nisl sed vulputate. Suspendisse mauris velit, pretium blandit in...
-                    </p>
-                </div>
-            </div>
-
-            <!-- News Card 7 -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&h=300&fit=crop" alt="Restaurant" class="w-full h-48 object-cover">
-                <div class="p-5">
-                    <p class="text-xs text-gray-500 mb-2">18.02.2022 14:00:00</p>
-                    <h3 class="font-semibold text-gray-800 mb-2 hover:text-green-600 cursor-pointer">
-                        Mauris commodo nec nisl sed vulputate. Suspendisse mauris velit...
-                    </h3>
-                    <p class="text-sm text-gray-600 line-clamp-3">
-                        Suspendisse auctor mauris et vitae malesuada. Mauris eu auctor Maecenas...
-                    </p>
-                </div>
-            </div>
-
-            <!-- News Card 8 -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?w=500&h=300&fit=crop" alt="Corn" class="w-full h-48 object-cover">
-                <div class="p-5">
-                    <p class="text-xs text-gray-500 mb-2">18.02.2022 14:00:00</p>
-                    <h3 class="font-semibold text-gray-800 mb-2 hover:text-green-600 cursor-pointer">
-                        Mauris commodo nec nisl sed vulputate. Suspendisse mauris velit...
-                    </h3>
-                    <p class="text-sm text-gray-600 line-clamp-3">
-                        Suspendisse auctor mauris et vitae et dignissim. Mauris laoreet mauris tempor...
-                    </p>
-                </div>
-            </div>
-
-            <!-- News Card 9 -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <img src="https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=500&h=300&fit=crop" alt="Products" class="w-full h-48 object-cover">
-                <div class="p-5">
-                    <p class="text-xs text-gray-500 mb-2">18.02.2022 14:00:00</p>
-                    <h3 class="font-semibold text-gray-800 mb-2 hover:text-green-600 cursor-pointer">
-                        Mauris commodo nec nisl sed vulputate. Suspendisse mauris velit...
-                    </h3>
-                    <p class="text-sm text-gray-600 line-clamp-3">
-                        Suspendisse auctor mauris et metus vel ultricies. Mauris vulputate...
-                    </p>
-                </div>
-            </div>
+            {% for p in posts %}
+                {% if p.id %}
+                    <!-- News Card -->
+                    <a href="{% url 'homeinfo:news_detail' p.id %}">
+                        <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                            <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=500&h=300&fit=crop" alt="Berries" class="w-full h-48 object-cover">
+                            <div class="p-5">
+                                <p class="text-xs text-gray-500 mb-2">{{ p.created_at }}</p>
+                                <h3 class="font-semibold text-gray-800 mb-2 hover:text-green-600 cursor-pointer">
+                                    {{ p.title }}
+                                </h3>
+                                <p class="text-sm text-gray-600 line-clamp-3">
+                                    {{ p.body }}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                {% else %}
+                    Nothing here.
+                {% endif %}
+            {% endfor %}
         </div>
 
         <!-- Pagination -->

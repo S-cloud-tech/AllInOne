@@ -5,7 +5,7 @@
 {% block content %}
 
     <!-- Main Content -->
-    <main class="bg-gray-100 py-12">
+    <main class="bg-gray-100 py-16">
         <div class="container mx-auto px-4">
             <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
                 <div class="grid md:grid-cols-2 gap-12">
@@ -41,16 +41,19 @@
                             <div>
                                 <h3 class="font-semibold text-gray-800 mb-3">SOCIAL MEDIA</h3>
                                 <div class="flex space-x-3">
-                                    <a href="#" class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center hover:bg-blue-700">
+                                    <a href="{{ general_info.facebook_url }}" class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center hover:bg-blue-700">
                                         <i class="fab fa-facebook-f text-white text-sm"></i>
                                     </a>
-                                    <a href="#" class="w-8 h-8 bg-blue-400 rounded flex items-center justify-center hover:bg-blue-500">
+                                    <a href="{{ general_info.twitter_url }}" class="w-8 h-8 bg-blue-400 rounded flex items-center justify-center hover:bg-blue-500">
                                         <i class="fab fa-twitter text-white text-sm"></i>
                                     </a>
-                                    <a href="#" class="w-8 h-8 bg-blue-700 rounded flex items-center justify-center hover:bg-blue-800">
+                                    <a href="{{ general_info.linkedIn_url }}" class="w-8 h-8 bg-blue-700 rounded flex items-center justify-center hover:bg-blue-800">
                                         <i class="fab fa-linkedin-in text-white text-sm"></i>
                                     </a>
-                                    <a href="#" class="w-8 h-8 bg-pink-500 rounded flex items-center justify-center hover:bg-pink-600">
+                                    <a href="{{ general_info.telegram_url }}" class="w-8 h-8 bg-blue-400 rounded flex items-center justify-center hover:bg-blue-600">
+                                        <i class="fab fa-telegram text-white text-sm"></i>
+                                    </a>
+                                    <a href="{{ general_info.instagram_url }}" class="w-8 h-8 bg-pink-500 rounded flex items-center justify-center hover:bg-pink-600">
                                         <i class="fab fa-instagram text-white text-sm"></i>
                                     </a>
                                 </div>
